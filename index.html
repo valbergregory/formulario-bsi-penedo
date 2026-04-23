@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preferências Docentes – Grade 2026.2 | BSI Penedo</title>
+<style>
+  /* ── RESET & BASE ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue:      #4285F4;
+    --blue-dark: #1a56c4;
+    --blue-bg:   #E8F0FE;
+    --blue-text: #1a3a6b;
+    --green-bg:  #E8F5E9;
+    --green-txt: #1B5E20;
+    --amber-bg:  #FFF8E1;
+    --amber-brd: #F9A825;
+    --amber-txt: #5D4037;
+    --orange-bg: #FFF3E0;
+    --orange-txt:#E65100;
+    --red:       #E24B4A;
+    --border:    #e0e0e0;
+    --bg:        #f0f4f8;
+    --card:      #ffffff;
+    --text:      #202124;
+    --muted:     #5f6368;
+    --radius:    8px;
+  }
+
+  body {
+    font-family: 'Google Sans', 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 2rem 1rem 4rem;
+    min-height: 100vh;
+  }
+
+  .container { max-width: 720px; margin: 0 auto; }
+
+  /* ── HEADER ── */
+  .form-header {
+    background: var(--card);
+    border-radius: var(--radius);
+    border-top: 10px solid var(--blue);
+    padding: 1.75rem 1.5rem 1.5rem;
+    margin-bottom: .875rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,.1);
+  }
+  .form-header h1 { font-size: 1.5rem; font-weight: 500; margin-bottom: .3rem; }
+  .form-header p  { font-size: .9rem; color: var(--muted); }
+
+  /* ── ALERT BOXES ── */
+  .alert {
+    border-left: 4px solid var(--blue);
+    background: var(--blue-bg);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: .875rem 1rem;
+    margin: 1rem 0 0;
+    font-size: .82rem;
+    color: var(--blue-text);
+    line-height: 1.7;
+  }
+  .alert strong { font-weight: 600; }
+  .alert-amber {
+    border-color: var(--amber-brd);
+    background: var(--amber-bg);
+    color: var(--amber-txt);
+  }
+
+  /* ── SECTION CARD ── */
+  .section {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: .875rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,.08);
+  }
+  .section-label {
+    font-size: .7rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: .875rem;
+  }
+  .periodo-pill {
+    display: inline-block;
+    background: var(--blue-bg);
+    color: var(--blue-text);
+    font-size: .72rem;
+    font-weight: 500;
+    padding: 2px 12px;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+  }
+
+  /* ── QUESTION BLOCK ── */
+  .q-block {
+    margin-bottom: 1.25rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .q-block:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+  .q-label {
+    font-size: .9rem;
+    font-weight: 500;
+    margin-bottom: .25rem;
+  }
+  .q-label .req { color: var(--red); margin-left: 3px; }
+  .q-hint {
+    font-size: .78rem;
+    color: var(--muted);
+    margin-bottom: .75rem;
+    line-height: 1.5;
+  }
+
+  /* ── INPUTS ── */
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #bbb;
+    background: transparent;
+    padding: .4rem 0;
+    font-size: .9rem;
+    color: var(--text);
+    outline: none;
+    font-family: inherit;
+    transition: border-color .2s;
+  }
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  textarea:focus { border-bottom-color: var(--blue); }
+  textarea { resize: vertical; min-height: 60px; }
+
+  /* ── AFFINITY TABLE ── */
+  .aff-table { width: 100%; border-collapse: collapse; font-size: .82rem; }
+  .aff-table th {
+    font-weight: 500;
+    color: var(--muted);
+    padding: 6px 8px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    font-size: .72rem;
+    line-height: 1.3;
+  }
+  .aff-table th:first-child { text-align: left; min-width: 200px; }
+  .aff-table td {
+    padding: 7px 8px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+  }
+  .aff-table td:first-child {
+    text-align: left;
+    color: var(--text);
+    font-size: .84rem;
+    line-height: 1.4;
+  }
+  .aff-table tr:last-child td { border-bottom: none; }
+  .aff-table tr:nth-child(even) td { background: #fafafa; }
+  .aff-table input[type="radio"] {
+    width: 16px; height: 16px;
+    accent-color: var(--blue);
+    cursor: pointer;
+    border-bottom: none;
+  }
+
+  /* ── BADGES ── */
+  .badge {
+    font-size: .65rem;
+    font-weight: 600;
+    padding: 1px 7px;
+    border-radius: 10px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .badge-obrig { background: var(--green-bg); color: var(--green-txt); }
+  .badge-ace   { background: var(--orange-bg); color: var(--orange-txt); }
+  .carga { font-size: .7rem; color: var(--muted); margin-left: 4px; }
+
+  /* ── CHECKBOXES / DAYS ── */
+  .check-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: .5rem;
+  }
+  .check-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #f8f9fa;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: .84rem;
+    cursor: pointer;
+    transition: background .15s, border-color .15s;
+  }
+  .check-label:hover { background: var(--blue-bg); border-color: var(--blue); }
+  .check-label input[type="checkbox"] {
+    width: 15px; height: 15px;
+    accent-color: var(--blue);
+    cursor: pointer;
+    border-bottom: none;
+  }
+
+  /* ── NOTURNO TAG ── */
+  .noturno-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #1e293b;
+    color: #94a3b8;
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: .78rem;
+    font-weight: 500;
+    margin-bottom: .5rem;
+  }
+
+  /* ── SUBMIT ── */
+  .form-actions { display: flex; gap: 1rem; align-items: center; margin-top: .5rem; }
+  .btn-submit {
+    background: var(--blue);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius);
+    padding: .7rem 2rem;
+    font-size: .95rem;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background .2s, transform .1s;
+  }
+  .btn-submit:hover   { background: var(--blue-dark); }
+  .btn-submit:active  { transform: scale(.98); }
+  .btn-submit:disabled { background: #aaa; cursor: not-allowed; }
+
+  /* ── STATUS ── */
+  #status-msg {
+    font-size: .85rem;
+    padding: .5rem .875rem;
+    border-radius: var(--radius);
+    display: none;
+  }
+  #status-msg.success { background: var(--green-bg); color: var(--green-txt); display: block; }
+  #status-msg.error   { background: #FFEBEE; color: #B71C1C; display: block; }
+
+  /* ── OVERFLOW ── */
+  .table-wrap { overflow-x: auto; }
+
+  @media (max-width: 600px) {
+    body { padding: 1rem .5rem 3rem; }
+    .form-header, .section { padding: 1rem; }
+    .aff-table th, .aff-table td { padding: 5px 4px; font-size: .72rem; }
+    .aff-table th:first-child { min-width: 140px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ════════════════════ CABEÇALHO ════════════════════ -->
+  <div class="form-header">
+    <h1>Preferências Docentes – Grade 2026.2 | BSI Penedo</h1>
+    <p>Levantamento de afinidades para composição da grade horária — todos os períodos do curso</p>
+    <div class="alert">
+      <strong>Contexto importante:</strong><br>
+      • O BSI Penedo passará a ter <strong>5 turmas por período</strong> em 2026.2.<br>
+      • Atualmente contamos com <strong>10 professores</strong>, quando o ideal seria <strong>12</strong>. A grade será distribuída de modo que cada docente fique com <strong>10h a 12h de aula por semana</strong>.<br>
+      • Este formulário cobre <strong>todos os 8 períodos</strong> do curso — tanto para a grade imediata quanto para futuras revisões do PPC.<br>
+      • Desde 2023, novos professores ingressaram no corpo docente. As respostas subsidiarão a <strong>atualização das afinidades no PPC</strong> e a distribuição de disciplinas por área.<br>
+      • O curso é <strong>noturno</strong>. Indique apenas os dias de preferência.
+    </div>
+  </div>
+
+  <form id="main-form">
+
+    <!-- ════════════════════ SEÇÃO 1: IDENTIFICAÇÃO ════════════════════ -->
+    <div class="section">
+      <div class="section-label">Seção 1 — Identificação</div>
+
+      <div class="q-block">
+        <div class="q-label">Nome completo <span class="req">*</span></div>
+        <input type="text" name="nome" required placeholder="Seu nome completo">
+      </div>
+
+      <div class="q-block">
+        <div class="q-label">E-mail institucional <span class="req">*</span></div>
+        <input type="email" name="email" required placeholder="seunome@penedo.ufal.br">
+      </div>
+
+      <div class="q-block">
+        <div class="q-label">Área(s) de formação / especialização</div>
+        <div class="q-hint">Informe seus títulos principais (ex: Dr. em Computação – Sistemas Distribuídos)</div>
+        <input type="text" name="formacao" placeholder="Sua resposta">
+      </div>
+    </div>
+
+    <!-- ════════════════════ MACRO: função para gerar tabelas de afinidade ════════════════════ -->
+    <!-- Cada seção de período usa uma tabela com radio por linha -->
+
+    <!-- ════ 1º PERÍODO ════ -->
+    <div class="section">
+      <div class="section-label">Seção 2 — Afinidade: 1º Período</div>
+      <div class="periodo-pill">1º Semestre — 432h / 24h semanais</div>
+      <div class="q-block">
+        <div class="q-label">Nível de afinidade por disciplina do 1º período <span class="req">*</span></div>
+        <div class="q-hint">Alta = domínio pleno e preferência &nbsp;|&nbsp; Média = leciono com conforto &nbsp;|&nbsp; Se necessário = aceito, mas não é preferência &nbsp;|&nbsp; Sem afinidade = não me sinto apto(a)</div>
+        <div class="table-wrap">
+        <table class="aff-table">
+          <thead><tr>
+            <th>Disciplina</th>
+            <th>Alta<br>afinidade</th>
+            <th>Média<br>afinidade</th>
+            <th>Se<br>necessário</th>
+            <th>Sem<br>afinidade</th>
+          </tr></thead>
+          <tbody>
+            <tr><td>Matemática 1 <span class="carga">(4h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p1_mat1" value="Alta" required></td><td><input type="radio" name="p1_mat1" value="Média"></td><td><input type="radio" name="p1_mat1" value="Se necessário"></td><td><input type="radio" name="p1_mat1" value="Sem afinidade"></td></tr>
+            <tr><td>Introdução à Administração <span class="carga">(4h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p1_adm" value="Alta" required></td><td><input type="radio" name="p1_adm" value="Média"></td><td><input type="radio" name="p1_adm" value="Se necessário"></td><td><input type="radio" name="p1_adm" value="Sem afinidade"></td></tr>
+            <tr><td>Direito Aplicado à Informática <span class="carga">(2h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p1_dir" value="Alta" required></td><td><input type="radio" name="p1_dir" value="Média"></td><td><input type="radio" name="p1_dir" value="Se necessário"></td><td><input type="radio" name="p1_dir" value="Sem afinidade"></td></tr>
+            <tr><td>Introdução à Lógica de Programação <span class="carga">(2h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p1_log" value="Alta" required></td><td><input type="radio" name="p1_log" value="Média"></td><td><input type="radio" name="p1_log" value="Se necessário"></td><td><input type="radio" name="p1_log" value="Sem afinidade"></td></tr>
+            <tr><td>Projetos Integradores <span class="carga">(4h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p1_proj" value="Alta" required></td><td><input type="radio" name="p1_proj" value="Média"></td><td><input type="radio" name="p1_proj" value="Se necessário"></td><td><input type="radio" name="p1_proj" value="Sem afinidade"></td></tr>
+            <tr><td>Introdução à Sistemas de Informação <span class="carga">(4h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p1_isi" value="Alta" required></td><td><input type="radio" name="p1_isi" value="Média"></td><td><input type="radio" name="p1_isi" value="Se necessário"></td><td><input type="radio" name="p1_isi" value="Sem afinidade"></td></tr>
+            <tr><td>ACE 1 – Tecnologias e Sociedade <span class="carga">(4h)</span><span class="badge badge-ace">ACE</span></td><td><input type="radio" name="p1_ace1" value="Alta" required></td><td><input type="radio" name="p1_ace1" value="Média"></td><td><input type="radio" name="p1_ace1" value="Se necessário"></td><td><input type="radio" name="p1_ace1" value="Sem afinidade"></td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ 2º PERÍODO ════ -->
+    <div class="section">
+      <div class="section-label">Seção 3 — Afinidade: 2º Período</div>
+      <div class="periodo-pill">2º Semestre — 360h / 20h semanais</div>
+      <div class="q-block">
+        <div class="q-label">Nível de afinidade por disciplina do 2º período <span class="req">*</span></div>
+        <div class="table-wrap">
+        <table class="aff-table">
+          <thead><tr><th>Disciplina</th><th>Alta<br>afinidade</th><th>Média<br>afinidade</th><th>Se<br>necessário</th><th>Sem<br>afinidade</th></tr></thead>
+          <tbody>
+            <tr><td>Teoria Geral dos Sistemas <span class="carga">(2h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p2_tgs" value="Alta" required></td><td><input type="radio" name="p2_tgs" value="Média"></td><td><input type="radio" name="p2_tgs" value="Se necessário"></td><td><input type="radio" name="p2_tgs" value="Sem afinidade"></td></tr>
+            <tr><td>Programação 1 <span class="carga">(4h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p2_prog1" value="Alta" required></td><td><input type="radio" name="p2_prog1" value="Média"></td><td><input type="radio" name="p2_prog1" value="Se necessário"></td><td><input type="radio" name="p2_prog1" value="Sem afinidade"></td></tr>
+            <tr><td>Laboratório de Programação 1 <span class="carga">(2h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p2_lab1" value="Alta" required></td><td><input type="radio" name="p2_lab1" value="Média"></td><td><input type="radio" name="p2_lab1" value="Se necessário"></td><td><input type="radio" name="p2_lab1" value="Sem afinidade"></td></tr>
+            <tr><td>Introdução a Ciências Econômicas <span class="carga">(2h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p2_eco" value="Alta" required></td><td><input type="radio" name="p2_eco" value="Média"></td><td><input type="radio" name="p2_eco" value="Se necessário"></td><td><input type="radio" name="p2_eco" value="Sem afinidade"></td></tr>
+            <tr><td>Lógica Aplicada <span class="carga">(4h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p2_logap" value="Alta" required></td><td><input type="radio" name="p2_logap" value="Média"></td><td><input type="radio" name="p2_logap" value="Se necessário"></td><td><input type="radio" name="p2_logap" value="Sem afinidade"></td></tr>
+            <tr><td>Estatística e Probabilidade <span class="carga">(4h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p2_est" value="Alta" required></td><td><input type="radio" name="p2_est" value="Média"></td><td><input type="radio" name="p2_est" value="Se necessário"></td><td><input type="radio" name="p2_est" value="Sem afinidade"></td></tr>
+            <tr><td>ACE 2 – Reflexos Sócio-ambientais das TDIC 1 <span class="carga">(2h)</span><span class="badge badge-ace">ACE</span></td><td><input type="radio" name="p2_ace2" value="Alta" required></td><td><input type="radio" name="p2_ace2" value="Média"></td><td><input type="radio" name="p2_ace2" value="Se necessário"></td><td><input type="radio" name="p2_ace2" value="Sem afinidade"></td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ 3º PERÍODO ════ -->
+    <div class="section">
+      <div class="section-label">Seção 4 — Afinidade: 3º Período</div>
+      <div class="periodo-pill">3º Semestre — 360h / 20h semanais</div>
+      <div class="q-block">
+        <div class="q-label">Nível de afinidade por disciplina do 3º período <span class="req">*</span></div>
+        <div class="table-wrap">
+        <table class="aff-table">
+          <thead><tr><th>Disciplina</th><th>Alta<br>afinidade</th><th>Média<br>afinidade</th><th>Se<br>necessário</th><th>Sem<br>afinidade</th></tr></thead>
+          <tbody>
+            <tr><td>Programação 2 <span class="carga">(4h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p3_prog2" value="Alta" required></td><td><input type="radio" name="p3_prog2" value="Média"></td><td><input type="radio" name="p3_prog2" value="Se necessário"></td><td><input type="radio" name="p3_prog2" value="Sem afinidade"></td></tr>
+            <tr><td>Inglês Instrumental <span class="carga">(2h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p3_ing" value="Alta" required></td><td><input type="radio" name="p3_ing" value="Média"></td><td><input type="radio" name="p3_ing" value="Se necessário"></td><td><input type="radio" name="p3_ing" value="Sem afinidade"></td></tr>
+            <tr><td>Matemática Discreta <span class="carga">(4h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p3_matd" value="Alta" required></td><td><input type="radio" name="p3_matd" value="Média"></td><td><input type="radio" name="p3_matd" value="Se necessário"></td><td><input type="radio" name="p3_matd" value="Sem afinidade"></td></tr>
+            <tr><td>Informação Contábil para Gestão <span class="carga">(4h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p3_cont" value="Alta" required></td><td><input type="radio" name="p3_cont" value="Média"></td><td><input type="radio" name="p3_cont" value="Se necessário"></td><td><input type="radio" name="p3_cont" value="Sem afinidade"></td></tr>
+            <tr><td>Metodologia da Pesquisa Científica <span class="carga">(4h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p3_met" value="Alta" required></td><td><input type="radio" name="p3_met" value="Média"></td><td><input type="radio" name="p3_met" value="Se necessário"></td><td><input type="radio" name="p3_met" value="Sem afinidade"></td></tr>
+            <tr><td>ACE 3 – Reflexos Sócio-ambientais das TDIC 2 <span class="carga">(2h)</span><span class="badge badge-ace">ACE</span></td><td><input type="radio" name="p3_ace3" value="Alta" required></td><td><input type="radio" name="p3_ace3" value="Média"></td><td><input type="radio" name="p3_ace3" value="Se necessário"></td><td><input type="radio" name="p3_ace3" value="Sem afinidade"></td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ 4º PERÍODO ════ -->
+    <div class="section">
+      <div class="section-label">Seção 5 — Afinidade: 4º Período</div>
+      <div class="periodo-pill">4º Semestre — 450h / 25h semanais</div>
+      <div class="q-block">
+        <div class="q-label">Nível de afinidade por disciplina do 4º período <span class="req">*</span></div>
+        <div class="table-wrap">
+        <table class="aff-table">
+          <thead><tr><th>Disciplina</th><th>Alta<br>afinidade</th><th>Média<br>afinidade</th><th>Se<br>necessário</th><th>Sem<br>afinidade</th></tr></thead>
+          <tbody>
+            <tr><td>Programação 3 <span class="carga">(4h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p4_prog3" value="Alta" required></td><td><input type="radio" name="p4_prog3" value="Média"></td><td><input type="radio" name="p4_prog3" value="Se necessário"></td><td><input type="radio" name="p4_prog3" value="Sem afinidade"></td></tr>
+            <tr><td>Gestão da Inovação Tecnológica <span class="carga">(4h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p4_git" value="Alta" required></td><td><input type="radio" name="p4_git" value="Média"></td><td><input type="radio" name="p4_git" value="Se necessário"></td><td><input type="radio" name="p4_git" value="Sem afinidade"></td></tr>
+            <tr><td>Arquitetura e Organização de Computadores <span class="carga">(4h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p4_aoc" value="Alta" required></td><td><input type="radio" name="p4_aoc" value="Média"></td><td><input type="radio" name="p4_aoc" value="Se necessário"></td><td><input type="radio" name="p4_aoc" value="Sem afinidade"></td></tr>
+            <tr><td>Engenharia de Software 1 <span class="carga">(4h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p4_es1" value="Alta" required></td><td><input type="radio" name="p4_es1" value="Média"></td><td><input type="radio" name="p4_es1" value="Se necessário"></td><td><input type="radio" name="p4_es1" value="Sem afinidade"></td></tr>
+            <tr><td>Gestão de Processos de Negócios <span class="carga">(4h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p4_gpn" value="Alta" required></td><td><input type="radio" name="p4_gpn" value="Média"></td><td><input type="radio" name="p4_gpn" value="Se necessário"></td><td><input type="radio" name="p4_gpn" value="Sem afinidade"></td></tr>
+            <tr><td>ACE 4 – Projeto Interdisciplinar de Extensão 1 <span class="carga">(5h)</span><span class="badge badge-ace">ACE</span></td><td><input type="radio" name="p4_ace4" value="Alta" required></td><td><input type="radio" name="p4_ace4" value="Média"></td><td><input type="radio" name="p4_ace4" value="Se necessário"></td><td><input type="radio" name="p4_ace4" value="Sem afinidade"></td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ 5º PERÍODO ════ -->
+    <div class="section">
+      <div class="section-label">Seção 6 — Afinidade: 5º Período</div>
+      <div class="periodo-pill">5º Semestre — 450h / 25h semanais</div>
+      <div class="q-block">
+        <div class="q-label">Nível de afinidade por disciplina do 5º período <span class="req">*</span></div>
+        <div class="table-wrap">
+        <table class="aff-table">
+          <thead><tr><th>Disciplina</th><th>Alta<br>afinidade</th><th>Média<br>afinidade</th><th>Se<br>necessário</th><th>Sem<br>afinidade</th></tr></thead>
+          <tbody>
+            <tr><td>Banco de Dados 1 <span class="carga">(4h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p5_bd1" value="Alta" required></td><td><input type="radio" name="p5_bd1" value="Média"></td><td><input type="radio" name="p5_bd1" value="Se necessário"></td><td><input type="radio" name="p5_bd1" value="Sem afinidade"></td></tr>
+            <tr><td>Inovação e Novos Negócios <span class="carga">(2h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p5_inn" value="Alta" required></td><td><input type="radio" name="p5_inn" value="Média"></td><td><input type="radio" name="p5_inn" value="Se necessário"></td><td><input type="radio" name="p5_inn" value="Sem afinidade"></td></tr>
+            <tr><td>Interação Humano-Computador <span class="carga">(4h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p5_ihc" value="Alta" required></td><td><input type="radio" name="p5_ihc" value="Média"></td><td><input type="radio" name="p5_ihc" value="Se necessário"></td><td><input type="radio" name="p5_ihc" value="Sem afinidade"></td></tr>
+            <tr><td>Engenharia de Software 2 <span class="carga">(4h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p5_es2" value="Alta" required></td><td><input type="radio" name="p5_es2" value="Média"></td><td><input type="radio" name="p5_es2" value="Se necessário"></td><td><input type="radio" name="p5_es2" value="Sem afinidade"></td></tr>
+            <tr><td>Sistemas Operacionais <span class="carga">(4h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p5_so" value="Alta" required></td><td><input type="radio" name="p5_so" value="Média"></td><td><input type="radio" name="p5_so" value="Se necessário"></td><td><input type="radio" name="p5_so" value="Sem afinidade"></td></tr>
+            <tr><td>Governança de Tecnologia da Informação <span class="carga">(2h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p5_gti" value="Alta" required></td><td><input type="radio" name="p5_gti" value="Média"></td><td><input type="radio" name="p5_gti" value="Se necessário"></td><td><input type="radio" name="p5_gti" value="Sem afinidade"></td></tr>
+            <tr><td>ACE 5 – Projeto Interdisciplinar de Extensão 2 <span class="carga">(5h)</span><span class="badge badge-ace">ACE</span></td><td><input type="radio" name="p5_ace5" value="Alta" required></td><td><input type="radio" name="p5_ace5" value="Média"></td><td><input type="radio" name="p5_ace5" value="Se necessário"></td><td><input type="radio" name="p5_ace5" value="Sem afinidade"></td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ 6º PERÍODO ════ -->
+    <div class="section">
+      <div class="section-label">Seção 7 — Afinidade: 6º Período</div>
+      <div class="periodo-pill">6º Semestre — 360h / 20h semanais</div>
+      <div class="q-block">
+        <div class="q-label">Nível de afinidade por disciplina do 6º período <span class="req">*</span></div>
+        <div class="table-wrap">
+        <table class="aff-table">
+          <thead><tr><th>Disciplina</th><th>Alta<br>afinidade</th><th>Média<br>afinidade</th><th>Se<br>necessário</th><th>Sem<br>afinidade</th></tr></thead>
+          <tbody>
+            <tr><td>Programação Web 1 <span class="carga">(4h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p6_pw1" value="Alta" required></td><td><input type="radio" name="p6_pw1" value="Média"></td><td><input type="radio" name="p6_pw1" value="Se necessário"></td><td><input type="radio" name="p6_pw1" value="Sem afinidade"></td></tr>
+            <tr><td>Banco de Dados 2 <span class="carga">(4h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p6_bd2" value="Alta" required></td><td><input type="radio" name="p6_bd2" value="Média"></td><td><input type="radio" name="p6_bd2" value="Se necessário"></td><td><input type="radio" name="p6_bd2" value="Sem afinidade"></td></tr>
+            <tr><td>Redes de Computadores 1 <span class="carga">(4h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p6_rc1" value="Alta" required></td><td><input type="radio" name="p6_rc1" value="Média"></td><td><input type="radio" name="p6_rc1" value="Se necessário"></td><td><input type="radio" name="p6_rc1" value="Sem afinidade"></td></tr>
+            <tr><td>Computador, Sociedade e Ética Profissional <span class="carga">(2h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p6_csep" value="Alta" required></td><td><input type="radio" name="p6_csep" value="Média"></td><td><input type="radio" name="p6_csep" value="Se necessário"></td><td><input type="radio" name="p6_csep" value="Sem afinidade"></td></tr>
+            <tr><td>Ciência dos Dados e Inteligência Empresarial <span class="carga">(4h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p6_cdie" value="Alta" required></td><td><input type="radio" name="p6_cdie" value="Média"></td><td><input type="radio" name="p6_cdie" value="Se necessário"></td><td><input type="radio" name="p6_cdie" value="Sem afinidade"></td></tr>
+            <tr><td>ACE 6 – Evento: SisWeek <span class="carga">(2h)</span><span class="badge badge-ace">ACE</span></td><td><input type="radio" name="p6_ace6" value="Alta" required></td><td><input type="radio" name="p6_ace6" value="Média"></td><td><input type="radio" name="p6_ace6" value="Se necessário"></td><td><input type="radio" name="p6_ace6" value="Sem afinidade"></td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ 7º PERÍODO ════ -->
+    <div class="section">
+      <div class="section-label">Seção 8 — Afinidade: 7º Período</div>
+      <div class="periodo-pill">7º Semestre — 360h / 20h semanais</div>
+      <div class="q-block">
+        <div class="q-label">Nível de afinidade por disciplina do 7º período <span class="req">*</span></div>
+        <div class="table-wrap">
+        <table class="aff-table">
+          <thead><tr><th>Disciplina</th><th>Alta<br>afinidade</th><th>Média<br>afinidade</th><th>Se<br>necessário</th><th>Sem<br>afinidade</th></tr></thead>
+          <tbody>
+            <tr><td>Programação para Dispositivos Móveis <span class="carga">(4h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p7_pdm" value="Alta" required></td><td><input type="radio" name="p7_pdm" value="Média"></td><td><input type="radio" name="p7_pdm" value="Se necessário"></td><td><input type="radio" name="p7_pdm" value="Sem afinidade"></td></tr>
+            <tr><td>Inteligência Artificial <span class="carga">(4h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p7_ia" value="Alta" required></td><td><input type="radio" name="p7_ia" value="Média"></td><td><input type="radio" name="p7_ia" value="Se necessário"></td><td><input type="radio" name="p7_ia" value="Sem afinidade"></td></tr>
+            <tr><td>Gestão do Conhecimento <span class="carga">(2h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p7_gc" value="Alta" required></td><td><input type="radio" name="p7_gc" value="Média"></td><td><input type="radio" name="p7_gc" value="Se necessário"></td><td><input type="radio" name="p7_gc" value="Sem afinidade"></td></tr>
+            <tr><td>Sistemas Distribuídos <span class="carga">(2h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p7_sd" value="Alta" required></td><td><input type="radio" name="p7_sd" value="Média"></td><td><input type="radio" name="p7_sd" value="Se necessário"></td><td><input type="radio" name="p7_sd" value="Sem afinidade"></td></tr>
+            <tr><td>Programação Web 2 <span class="carga">(4h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p7_pw2" value="Alta" required></td><td><input type="radio" name="p7_pw2" value="Média"></td><td><input type="radio" name="p7_pw2" value="Se necessário"></td><td><input type="radio" name="p7_pw2" value="Sem afinidade"></td></tr>
+            <tr><td>Marketing Tecnológico e Estratégico <span class="carga">(2h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p7_mte" value="Alta" required></td><td><input type="radio" name="p7_mte" value="Média"></td><td><input type="radio" name="p7_mte" value="Se necessário"></td><td><input type="radio" name="p7_mte" value="Sem afinidade"></td></tr>
+            <tr><td>Redes de Computadores 2 <span class="carga">(2h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p7_rc2" value="Alta" required></td><td><input type="radio" name="p7_rc2" value="Média"></td><td><input type="radio" name="p7_rc2" value="Se necessário"></td><td><input type="radio" name="p7_rc2" value="Sem afinidade"></td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ 8º PERÍODO ════ -->
+    <div class="section">
+      <div class="section-label">Seção 9 — Afinidade: 8º Período</div>
+      <div class="periodo-pill">8º Semestre — 360h / 20h semanais</div>
+      <div class="q-block">
+        <div class="q-label">Nível de afinidade por disciplina do 8º período <span class="req">*</span></div>
+        <div class="table-wrap">
+        <table class="aff-table">
+          <thead><tr><th>Disciplina</th><th>Alta<br>afinidade</th><th>Média<br>afinidade</th><th>Se<br>necessário</th><th>Sem<br>afinidade</th></tr></thead>
+          <tbody>
+            <tr><td>Inovação Tecnológica e Empreendedorismo <span class="carga">(4h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p8_ite" value="Alta" required></td><td><input type="radio" name="p8_ite" value="Média"></td><td><input type="radio" name="p8_ite" value="Se necessário"></td><td><input type="radio" name="p8_ite" value="Sem afinidade"></td></tr>
+            <tr><td>Segurança e Auditoria de Sistemas de Informação <span class="carga">(2h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p8_sasi" value="Alta" required></td><td><input type="radio" name="p8_sasi" value="Média"></td><td><input type="radio" name="p8_sasi" value="Se necessário"></td><td><input type="radio" name="p8_sasi" value="Sem afinidade"></td></tr>
+            <tr><td>Gestão da Qualidade de Sistemas <span class="carga">(4h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p8_gqs" value="Alta" required></td><td><input type="radio" name="p8_gqs" value="Média"></td><td><input type="radio" name="p8_gqs" value="Se necessário"></td><td><input type="radio" name="p8_gqs" value="Sem afinidade"></td></tr>
+            <tr><td>Prática e Gerenciamento de Projetos <span class="carga">(4h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p8_pgp" value="Alta" required></td><td><input type="radio" name="p8_pgp" value="Média"></td><td><input type="radio" name="p8_pgp" value="Se necessário"></td><td><input type="radio" name="p8_pgp" value="Sem afinidade"></td></tr>
+            <tr><td>Gestão de Equipes e Liderança <span class="carga">(2h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p8_gel" value="Alta" required></td><td><input type="radio" name="p8_gel" value="Média"></td><td><input type="radio" name="p8_gel" value="Se necessário"></td><td><input type="radio" name="p8_gel" value="Sem afinidade"></td></tr>
+            <tr><td>Gestão de PMEs e Startups <span class="carga">(4h)</span><span class="badge badge-obrig">obrig</span></td><td><input type="radio" name="p8_pme" value="Alta" required></td><td><input type="radio" name="p8_pme" value="Média"></td><td><input type="radio" name="p8_pme" value="Se necessário"></td><td><input type="radio" name="p8_pme" value="Sem afinidade"></td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════════════════ SEÇÃO 10: DIAS ════════════════════ -->
+    <div class="section">
+      <div class="section-label">Seção 10 — Preferência de Dias (Turno Noturno)</div>
+      <div class="alert alert-amber" style="margin:0 0 1rem">
+        O BSI Penedo é um curso <strong>exclusivamente noturno</strong>. Todas as aulas ocorrem no período noturno. Indique apenas sua preferência de dias da semana.
+      </div>
+
+      <div class="q-block">
+        <div class="q-label">Quais dias você prefere para ministrar aulas em 2026.2? <span class="req">*</span></div>
+        <div class="q-hint">Selecione preferencialmente 2 ou 3 dias.</div>
+        <div class="check-grid">
+          <label class="check-label"><input type="checkbox" name="dias" value="Segunda-feira"> Segunda-feira</label>
+          <label class="check-label"><input type="checkbox" name="dias" value="Terça-feira"> Terça-feira</label>
+          <label class="check-label"><input type="checkbox" name="dias" value="Quarta-feira"> Quarta-feira</label>
+          <label class="check-label"><input type="checkbox" name="dias" value="Quinta-feira"> Quinta-feira</label>
+          <label class="check-label"><input type="checkbox" name="dias" value="Sexta-feira"> Sexta-feira</label>
+        </div>
+      </div>
+
+      <div class="q-block">
+        <div class="q-label">Há alguma restrição de dia que deva ser respeitada?</div>
+        <div class="q-hint">Ex: "não posso às sextas-feiras" — inclua compromissos fixos noturnos</div>
+        <textarea name="restricao_dia" placeholder="Sua resposta (opcional)"></textarea>
+      </div>
+    </div>
+
+    <!-- ════════════════════ SEÇÃO 11: PPC ════════════════════ -->
+    <div class="section">
+      <div class="section-label">Seção 11 — Contribuição para Revisão do PPC</div>
+      <div class="alert" style="margin:0 0 1rem">
+        Desde 2023, o curso recebeu novos professores com novas formações. As respostas abaixo subsidiarão futuras revisões do PPC do BSI Penedo, sem compromisso imediato com 2026.2.
+      </div>
+
+      <div class="q-block">
+        <div class="q-label">Há disciplina(s) do PPC em que você tem alta afinidade não contempladas adequadamente nas seções anteriores?</div>
+        <div class="q-hint">Informe o nome da disciplina e o período</div>
+        <textarea name="ppc_afinidade_extra" placeholder="Sua resposta (opcional)"></textarea>
+      </div>
+
+      <div class="q-block">
+        <div class="q-label">Há tema ou disciplina relevante para SI que ainda não consta no PPC e que você teria condições de propor e lecionar?</div>
+        <div class="q-hint">Ex: IA aplicada, Blockchain, Computação em Nuvem, Direito Digital, Economia Comportamental...</div>
+        <textarea name="ppc_nova_disciplina" placeholder="Sua resposta (opcional)"></textarea>
+      </div>
+
+      <div class="q-block">
+        <div class="q-label">Alguma disciplina atual que deveria ser reformulada, atualizada ou redistribuída entre períodos?</div>
+        <textarea name="ppc_reformular" placeholder="Sua resposta (opcional)"></textarea>
+      </div>
+
+      <div class="q-block">
+        <div class="q-label">Comentários adicionais ou sugestões para a coordenação</div>
+        <textarea name="comentarios" placeholder="Sua resposta (opcional)"></textarea>
+      </div>
+    </div>
+
+    <!-- ════════════════════ SUBMIT ════════════════════ -->
+    <div class="section">
+      <div id="status-msg"></div>
+      <div class="form-actions">
+        <button type="submit" class="btn-submit" id="btn-submit">Enviar resposta</button>
+        <span id="loading-txt" style="font-size:.85rem;color:var(--muted);display:none">Enviando...</span>
+      </div>
+      <p style="font-size:.75rem;color:var(--muted);margin-top:.875rem">
+        * Campos obrigatórios. Suas respostas serão registradas em planilha segura de uso exclusivo da coordenação do BSI Penedo.
+      </p>
+    </div>
+
+  </form>
+</div>
+
+<script>
+  // ═══════════════════════════════════════════════════════════
+  //  PASSO 1: Cole aqui a URL do seu Google Apps Script
+  //  (gerada após publicar o script como Web App)
+  // ═══════════════════════════════════════════════════════════
+  const SCRIPT_URL = 'https://script.google.com/a/macros/penedo.ufal.br/s/AKfycbzwTTlvBHCdzs77bf1zI_0cvQeELHE-DvrHg7Sc_579Qxrlexec0NqJGlfHqRk-O3r8kQ/exec';
+
+  document.getElementById('main-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const btn  = document.getElementById('btn-submit');
+    const load = document.getElementById('loading-txt');
+    const msg  = document.getElementById('status-msg');
+
+    // ── validação básica de checkboxes ──
+    const dias = [...document.querySelectorAll('input[name="dias"]:checked')];
+    if (dias.length === 0) {
+      msg.className = 'error';
+      msg.textContent = 'Por favor, selecione ao menos um dia de preferência.';
+      msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    btn.disabled = true;
+    load.style.display = 'inline';
+    msg.className = '';
+    msg.textContent = '';
+
+    // ── coleta todos os campos ──
+    const fd  = new FormData(this);
+    const obj = {};
+
+    // campos de texto simples
+    for (const [key, val] of fd.entries()) {
+      if (key === 'dias') continue;
+      obj[key] = val;
+    }
+
+    // dias (múltiplos checkboxes)
+    obj['dias'] = dias.map(c => c.value).join(', ');
+
+    // timestamp
+    obj['timestamp'] = new Date().toLocaleString('pt-BR', { timeZone: 'America/Maceio' });
+
+    try {
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(obj)
+      });
+
+      msg.className = 'success';
+      msg.textContent = '✓ Resposta enviada com sucesso! Obrigado pela sua participação.';
+      btn.textContent = 'Enviado';
+      this.querySelectorAll('input, textarea, button').forEach(el => el.disabled = true);
+
+    } catch (err) {
+      msg.className = 'error';
+      msg.textContent = 'Erro ao enviar. Verifique sua conexão e tente novamente.';
+      btn.disabled = false;
+    }
+
+    load.style.display = 'none';
+    msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+</script>
+</body>
+</html>
