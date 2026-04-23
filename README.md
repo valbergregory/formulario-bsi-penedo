@@ -1,5 +1,5 @@
 [README.md](https://github.com/user-attachments/files/27027635/README.md)
-# Levantamento de Afinidades Docentes – BSI Penedo / UFAL
+# Levantamento de Afinidades Docentes – SI Penedo / UFAL
 ### Formulário de Coleta de Preferências para Oferta de Disciplinas e Subsídio ao NDE
 
 [![UFAL](https://img.shields.io/badge/Instituição-UFAL-003DA5?style=flat-square)](https://ufal.edu.br)
