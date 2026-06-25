@@ -1,0 +1,297 @@
+---
+title: "Projetos"
+description: "Trilha de 18 projetos em desenvolvimento entre agosto de 2026 e julho de 2027."
+---
+
+> **In English:** This page lists 18 planned projects for the 2026–2027 learning track, spanning data analysis, econometrics, legal tools, regional observatories, and APIs. Projects are organized by status, language, and area.
+
+Os projetos abaixo fazem parte de uma **trilha progressiva** de formação técnica e científica. Eles não são aleatórios: cada projeto consolida competências adquiridas no anterior e introduz novos desafios.
+
+::: {.callout-note}
+Apenas o projeto **Laboratório de Direito, Economia e Tecnologia** está em desenvolvimento. Os demais são **planejados** para serem iniciados entre agosto de 2026 e julho de 2027.
+:::
+
+---
+
+## Filtrar projetos
+
+```{=html}
+<div style="margin-bottom:1.5rem; display:flex; flex-wrap:wrap; gap:0.5rem;">
+  <button onclick="filtrar('todos')" class="btn btn-sm btn-primary">Todos</button>
+  <button onclick="filtrar('r')" class="btn btn-sm btn-outline-secondary">R</button>
+  <button onclick="filtrar('python')" class="btn btn-sm btn-outline-secondary">Python</button>
+  <button onclick="filtrar('sql')" class="btn btn-sm btn-outline-secondary">SQL</button>
+  <button onclick="filtrar('cpp')" class="btn btn-sm btn-outline-secondary">C++</button>
+  <button onclick="filtrar('java')" class="btn btn-sm btn-outline-secondary">Java</button>
+  <button onclick="filtrar('direito')" class="btn btn-sm btn-outline-secondary">Direito</button>
+  <button onclick="filtrar('economia')" class="btn btn-sm btn-outline-secondary">Economia</button>
+  <button onclick="filtrar('dados')" class="btn btn-sm btn-outline-secondary">Dados</button>
+</div>
+
+<script>
+function filtrar(tag) {
+  const cards = document.querySelectorAll('.card-projeto-wrapper');
+  cards.forEach(card => {
+    if (tag === 'todos' || card.dataset.tags.includes(tag)) {
+      card.style.display = '';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+</script>
+```
+
+---
+
+## Projetos
+
+::: {.card-projeto-wrapper data-tags="quarto r python dados"}
+::: {.card-projeto}
+### 1. Laboratório de Direito, Economia e Tecnologia
+
+<span class="badge-status badge-em-dev">Em desenvolvimento</span>
+<span class="tag-tech">Quarto</span><span class="tag-tech">R</span><span class="tag-tech">Python</span><span class="tag-tech">GitHub Actions</span>
+
+**Descrição:** Site-portfólio acadêmico e tecnológico com laboratórios, trilha de aprendizagem, diário de evolução, materiais didáticos e documentação de projetos.
+
+**Período:** Agosto 2026 – contínuo | **Dificuldade:** Médio–Alto
+
+[→ GitHub](https://github.com/valbergregory/valber-lab) · [→ Site](https://valbergregory.github.io/valber-lab)
+:::
+:::
+
+::: {.card-projeto-wrapper data-tags="sql dados economia"}
+::: {.card-projeto}
+### 2. SQL para Pesquisadores
+
+<span class="badge-status badge-planejado">Planejado</span>
+<span class="tag-tech">SQL</span><span class="tag-tech">PostgreSQL</span><span class="tag-tech">DuckDB</span>
+
+**Descrição:** Guia prático e progressivo de SQL com exercícios aplicados à pesquisa acadêmica, análise de dados públicos e bases jurídicas.
+
+**Período:** Setembro 2026 | **Dificuldade:** Básico–Médio
+
+Repositório será criado em setembro de 2026.
+:::
+:::
+
+::: {.card-projeto-wrapper data-tags="python dados economia"}
+::: {.card-projeto}
+### 3. Painel de Indicadores Econômicos Municipais
+
+<span class="badge-status badge-planejado">Planejado</span>
+<span class="tag-tech">Python</span><span class="tag-tech">pandas</span><span class="tag-tech">matplotlib</span>
+
+**Descrição:** Painel de visualização com indicadores socioeconômicos municipais extraídos de bases públicas (IBGE, IPEA, STN). Foco em Alagoas e Baixo São Francisco.
+
+**Período:** Outubro 2026 | **Dificuldade:** Médio
+:::
+:::
+
+::: {.card-projeto-wrapper data-tags="r python economia dados econometria"}
+::: {.card-projeto}
+### 4. Laboratório de Econometria Aplicada
+
+<span class="badge-status badge-planejado">Planejado</span>
+<span class="tag-tech">R</span><span class="tag-tech">Python</span><span class="tag-tech">statsmodels</span>
+
+**Descrição:** Repositório de exemplos e tutoriais de econometria: regressão linear, painel, séries temporais, variáveis instrumentais — todos com dados reais ou simulados e explicação didática.
+
+**Período:** Outubro–Novembro 2026 | **Dificuldade:** Médio–Alto
+:::
+:::
+
+::: {.card-projeto-wrapper data-tags="python sql dados"}
+::: {.card-projeto}
+### 5. Fiscal de Qualidade de Dados
+
+<span class="badge-status badge-planejado">Planejado</span>
+<span class="tag-tech">Python</span><span class="tag-tech">pandas</span><span class="tag-tech">Great Expectations</span>
+
+**Descrição:** Ferramenta para auditoria automática de qualidade de bases de dados públicas: valores ausentes, duplicatas, inconsistências e violações de domínio.
+
+**Período:** Novembro 2026 | **Dificuldade:** Médio
+:::
+:::
+
+::: {.card-projeto-wrapper data-tags="python java economia dados"}
+::: {.card-projeto}
+### 6. Analisador Financeiro de Empresas
+
+<span class="badge-status badge-planejado">Planejado</span>
+<span class="tag-tech">Python</span><span class="tag-tech">pandas</span><span class="tag-tech">Java</span>
+
+**Descrição:** Calculadora de indicadores financeiros (liquidez, endividamento, rentabilidade, margem) a partir de balanços patrimoniais. Interface para comparação entre empresas.
+
+**Período:** Dezembro 2026 | **Dificuldade:** Médio
+:::
+:::
+
+::: {.card-projeto-wrapper data-tags="python java direito dados"}
+::: {.card-projeto}
+### 7. Anonimizador de Documentos Jurídicos
+
+<span class="badge-status badge-planejado">Planejado</span>
+<span class="tag-tech">Python</span><span class="tag-tech">spaCy</span><span class="tag-tech">LGPD</span>
+
+**Descrição:** Ferramenta para identificação e substituição automática de dados pessoais em documentos jurídicos, em conformidade com a LGPD. Processa CPF, nomes, endereços e datas.
+
+**Período:** Dezembro 2026 | **Dificuldade:** Alto
+:::
+:::
+
+::: {.card-projeto-wrapper data-tags="java python direito"}
+::: {.card-projeto}
+### 8. Calculadora de Prazos Processuais
+
+<span class="badge-status badge-planejado">Planejado</span>
+<span class="tag-tech">Java</span><span class="tag-tech">Python</span>
+
+**Descrição:** Aplicação para cálculo de prazos processuais civis e trabalhistas, considerando dias úteis, feriados nacionais e regionais (Alagoas) e suspensões de prazo.
+
+**Período:** Janeiro 2027 | **Dificuldade:** Médio
+:::
+:::
+
+::: {.card-projeto-wrapper data-tags="cpp python economia"}
+::: {.card-projeto}
+### 9. Métodos Numéricos para Economia
+
+<span class="badge-status badge-planejado">Planejado</span>
+<span class="tag-tech">C++</span><span class="tag-tech">Python</span>
+
+**Descrição:** Implementações de métodos numéricos aplicados a problemas econômicos: otimização, equações diferenciais, simulação de Monte Carlo.
+
+**Período:** Abril 2027 | **Dificuldade:** Alto
+:::
+:::
+
+::: {.card-projeto-wrapper data-tags="r python dados economia"}
+::: {.card-projeto}
+### 10. Observatório da Economia Pesqueira do São Francisco
+
+<span class="badge-status badge-planejado">Planejado</span>
+<span class="tag-tech">R</span><span class="tag-tech">Python</span><span class="tag-tech">SQL</span>
+
+**Descrição:** Dados, análises, visualizações e indicadores sobre a economia pesqueira do Baixo São Francisco. Integra dados ambientais, econômicos e sociais da região.
+
+**Período:** Fevereiro 2027 | **Dificuldade:** Alto
+:::
+:::
+
+::: {.card-projeto-wrapper data-tags="r python quarto dados"}
+::: {.card-projeto}
+### 11. Repositório de Estudos Reproduzíveis
+
+<span class="badge-status badge-planejado">Planejado</span>
+<span class="tag-tech">R</span><span class="tag-tech">Python</span><span class="tag-tech">Quarto</span>
+
+**Descrição:** Coleção de estudos de caso com código, dados e narrativa integrados em documentos Quarto reproduzíveis. Cada estudo aborda um problema real de Economia ou Direito.
+
+**Período:** Março 2027 | **Dificuldade:** Médio–Alto
+:::
+:::
+
+::: {.card-projeto-wrapper data-tags="python sql dados direito economia"}
+::: {.card-projeto}
+### 12. API de Indicadores Jurídicos e Econômicos
+
+<span class="badge-status badge-planejado">Planejado</span>
+<span class="tag-tech">Python</span><span class="tag-tech">FastAPI</span><span class="tag-tech">SQL</span>
+
+**Descrição:** API REST pública com endpoints para acesso a indicadores judiciais (carga de processos, tempo médio de julgamento) e econômicos municipais integrados.
+
+**Período:** Maio 2027 | **Dificuldade:** Alto
+:::
+:::
+
+::: {.card-projeto-wrapper data-tags="python java sql dados"}
+::: {.card-projeto}
+### 13. Sistema de Gestão de Orientações e Pesquisas
+
+<span class="badge-status badge-planejado">Planejado</span>
+<span class="tag-tech">Python</span><span class="tag-tech">Java</span><span class="tag-tech">SQL</span>
+
+**Descrição:** Sistema para gestão de orientações de TCC e pesquisas acadêmicas: registro de reuniões, prazos, documentos e acompanhamento de cronograma.
+
+**Período:** Junho 2027 | **Dificuldade:** Alto
+:::
+:::
+
+::: {.card-projeto-wrapper data-tags="python sql java direito dados"}
+::: {.card-projeto}
+### 14. Distribuidor Inteligente de Processos
+
+<span class="badge-status badge-planejado">Planejado</span>
+<span class="tag-tech">Python</span><span class="tag-tech">SQL</span>
+
+**Descrição:** Modelo de distribuição de processos judiciais baseado em critérios de carga de trabalho, especialidade e critérios normativos — inspirado em desafios reais do Judiciário.
+
+**Período:** Junho 2027 | **Dificuldade:** Alto
+:::
+:::
+
+::: {.card-projeto-wrapper data-tags="python sql java economia dados"}
+::: {.card-projeto}
+### 15. Plataforma Municipal de Entregas
+
+<span class="badge-status badge-planejado">Planejado</span>
+<span class="tag-tech">Python</span><span class="tag-tech">Java</span><span class="tag-tech">SQL</span>
+
+**Descrição:** Sistema para gestão de entregas de serviços públicos municipais, com rastreamento de solicitações, prazos e relatórios de desempenho.
+
+**Período:** Julho 2027 | **Dificuldade:** Alto
+:::
+:::
+
+::: {.card-projeto-wrapper data-tags="r python sql cpp java dados economia direito"}
+::: {.card-projeto}
+### 16. Um Problema, Cinco Linguagens
+
+<span class="badge-status badge-planejado">Planejado</span>
+<span class="tag-tech">R</span><span class="tag-tech">Python</span><span class="tag-tech">SQL</span><span class="tag-tech">C++</span><span class="tag-tech">Java</span>
+
+**Descrição:** Projeto didático que resolve o mesmo problema em cinco linguagens diferentes, destacando as diferenças de paradigma, sintaxe, desempenho e aplicabilidade.
+
+**Período:** Maio 2027 | **Dificuldade:** Médio–Alto
+:::
+:::
+
+::: {.card-projeto-wrapper data-tags="r python sql cpp java dados"}
+::: {.card-projeto}
+### 17. Cem Exercícios de Programação Aplicada
+
+<span class="badge-status badge-planejado">Planejado</span>
+<span class="tag-tech">R</span><span class="tag-tech">Python</span><span class="tag-tech">SQL</span>
+
+**Descrição:** Coleção de 100 exercícios comentados de programação com foco em problemas reais de Economia, Direito e Administração Pública. Material didático para estudantes.
+
+**Período:** Contínuo 2026–2027 | **Dificuldade:** Básico a Avançado
+:::
+:::
+
+::: {.card-projeto-wrapper data-tags="r python sql quarto dados direito economia"}
+::: {.card-projeto}
+### 18. Observatório de Direito, Economia e Tecnologia
+
+<span class="badge-status badge-planejado">Planejado</span>
+<span class="tag-tech">Quarto</span><span class="tag-tech">R</span><span class="tag-tech">Python</span>
+
+**Descrição:** Publicação periódica de análises sobre a intersecção entre Direito, Economia e Tecnologia no Brasil: jurisprudência em dados, indicadores regulatórios, análises setoriais.
+
+**Período:** Julho 2027 | **Dificuldade:** Médio–Alto
+:::
+:::
+
+---
+
+## Resumo
+
+| Situação | Quantidade |
+|----------|-----------|
+| Em desenvolvimento | 1 |
+| Planejado | 17 |
+| Concluído | 0 |
+
+Atualizado em: agosto de 2026.

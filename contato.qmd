@@ -1,0 +1,56 @@
+---
+title: "Contato"
+description: "Formas de contato e colaboração."
+toc: false
+---
+
+## Formas de contato
+
+### Contato profissional
+
+Para questões relacionadas à pesquisa, ensino ou colaboração acadêmica:
+
+- **E-mail institucional (UFAL):** *[endereço institucional a ser inserido]*
+- **Plataforma Lattes:** *[link a ser inserido]*
+- **GitHub:** [github.com/valbergregory](https://github.com/valbergregory)
+
+::: {.callout-note}
+O endereço de e-mail pessoal e o telefone não são publicados neste portfólio por questões de privacidade. Utilize o e-mail institucional para contato profissional.
+:::
+
+---
+
+## Colaborações
+
+Estou aberto a colaborações nas seguintes modalidades:
+
+- **Pesquisa:** co-autoria em projetos que integrem Direito, Economia e Tecnologia
+- **Orientação:** estudantes interessados em TCC ou iniciação científica nas áreas do laboratório
+- **Projetos de dados:** análise de bases públicas para fins acadêmicos ou de interesse público
+- **Ensino:** materiais didáticos e cursos de extensão
+
+---
+
+## Contribuições ao laboratório
+
+Se você identificar erros, tiver sugestões ou quiser contribuir com código ou conteúdo:
+
+1. Abra uma [issue no GitHub](https://github.com/valbergregory/valber-lab/issues)
+2. Consulte o [guia de contribuição](https://github.com/valbergregory/valber-lab/blob/main/CONTRIBUTING.md)
+3. Envie um pull request
+
+---
+
+## Localização institucional
+
+**Universidade Federal de Alagoas — Unidade Educacional Penedo**
+Curso de Bacharelado em Sistemas de Informação
+Penedo – Alagoas – Brasil
+
+*Endereço completo disponível no site da UFAL.*
+
+---
+
+::: {.callout-warning}
+**Aviso:** Este portfólio não aceita solicitações de estágio, consultoria comercial, parcerias de marketing ou contatos não relacionados à pesquisa, ao ensino ou ao desenvolvimento acadêmico. Mensagens fora desse escopo não serão respondidas.
+:::

@@ -1,0 +1,127 @@
+---
+title: "Pesquisa"
+description: "Linhas de pesquisa, questões orientadoras e projetos futuros do laboratório."
+---
+
+Esta página apresenta as linhas de pesquisa que orientam o laboratório. Trata-se de interesses em desenvolvimento — não de estudos concluídos ou publicados. As questões aqui listadas são os problemas que motivam minha trajetória de aprendizagem técnica e científica.
+
+---
+
+## Questões que orientam o laboratório
+
+> *Estas perguntas não são retóricas. São os problemas que me levam a estudar dados, programação e sistemas.*
+
+1. **Como avaliar empiricamente os efeitos de normas e políticas públicas?**
+   Leis e decisões judiciais afetam comportamentos, mercados e bem-estar. Mas como medir esses efeitos de forma rigorosa? Quais dados existem? Quais métodos são adequados?
+
+2. **Como desenvolver sistemas de inteligência artificial compatíveis com direitos fundamentais?**
+   IA pode aumentar a eficiência do Judiciário e da Administração Pública, mas também reproduz vieses e pode violar garantias constitucionais. Que critérios devem guiar o design desses sistemas?
+
+3. **Como utilizar dados para melhorar decisões públicas?**
+   A maioria das decisões em políticas públicas ainda é tomada com base em intuição ou precedentes. Como transformar dados públicos disponíveis em insumos úteis para gestores e juízes?
+
+4. **Como aproximar pesquisa acadêmica, programação e problemas regionais?**
+   O Nordeste brasileiro, e especialmente o Baixo São Francisco, tem características econômicas, ambientais e sociais específicas. Como construir conhecimento que dialogue com essa realidade?
+
+5. **Como tornar modelos quantitativos mais compreensíveis para profissionais do Direito?**
+   Econometria e ciência de dados são ferramentas poderosas, mas inacessíveis a quem não tem formação quantitativa. Como traduzir resultados sem simplificá-los de forma distorcida?
+
+---
+
+## Linhas de pesquisa
+
+### Inteligência Artificial e Julgamento Justo
+
+A crescente introdução de algoritmos no Poder Judiciário — para distribuição de processos, análise de jurisprudência e auxílio à decisão — levanta questões sobre transparência, responsabilidade e igualdade. Esta linha investiga os critérios normativos e técnicos para avaliar sistemas de IA em contextos judiciais.
+
+**Tópicos:** explicabilidade de modelos (XAI), viés algorítmico, due process digital, accountability de sistemas automatizados.
+
+---
+
+### Governança Algorítmica
+
+Algoritmos governam crescentemente o acesso a crédito, benefícios sociais, saúde e justiça. Esta linha analisa os instrumentos regulatórios e de gestão pública para supervisionar sistemas algorítmicos de alto impacto.
+
+**Tópicos:** regulação de IA no Brasil e na UE (AI Act), avaliação de impacto algorítmico, auditorias de sistemas automatizados.
+
+---
+
+### Inteligência Artificial Generativa no Judiciário
+
+Os modelos de linguagem de grande escala (LLMs) como GPT, Claude e outros estão sendo testados para auxílio à elaboração de sentenças, pesquisa jurisprudencial e síntese de documentos. Esta linha avalia as promessas, os riscos e os limites éticos dessas aplicações.
+
+**Tópicos:** alucinações em LLMs, verificação de fatos jurídicos, responsabilidade por erro de IA, supervisão humana obrigatória.
+
+---
+
+### LGPD e Setor Público
+
+A Lei Geral de Proteção de Dados (LGPD) impõe obrigações também aos órgãos públicos, mas a implementação ainda é incipiente. Esta linha analisa o estágio de conformidade de órgãos judiciários e executivos e propõe modelos de gestão de dados adequados à LGPD.
+
+**Tópicos:** bases legais para tratamento no setor público, DPO no judiciário, anonimização de dados processuais, incidentes de segurança.
+
+---
+
+### Direito, Economia e Sistemas de Informação
+
+Integração entre a análise econômica das normas jurídicas e o design de sistemas de informação que operacionalizam essas normas. Estuda como escolhas de design de sistemas refletem — ou distorcem — as intenções do legislador.
+
+**Tópicos:** Análise Econômica do Direito, sistemas de apoio à decisão jurídica, modelagem de processos normativos.
+
+---
+
+### Econometria Aplicada a Problemas Jurídicos
+
+Uso de métodos quantitativos para avaliar efeitos de normas, decisões e políticas. Inclui avaliação de impacto, análise de sobrevivência de processos e modelagem de comportamento litigante.
+
+**Tópicos:** diferenças em diferenças, regressão com descontinuidade, dados em painel, modelos de duração.
+
+---
+
+### Empresas, Regulação e Inovação
+
+Análise do comportamento de firmas em mercados regulados, com ênfase em inovação, concorrência e conformidade regulatória. Inclui estudo de setores com alta regulação (telecomunicações, energia, fintechs).
+
+**Tópicos:** teoria da firma, regulação econômica, antitruste, economia da inovação.
+
+---
+
+### Desenvolvimento Regional
+
+Estudo das condições e determinantes do desenvolvimento econômico em regiões periféricas, com ênfase em Alagoas e no Baixo São Francisco.
+
+**Tópicos:** indicadores de desenvolvimento humano e econômico, análise de convergência, políticas de desenvolvimento regional, dados do IBGE e IPEA.
+
+---
+
+### Turismo, Pesca e Economia Local
+
+Economia do turismo em destinos históricos e culturais (Penedo/AL) e economia pesqueira do Baixo São Francisco. Inclui análise de cadeias produtivas locais e impactos socioeconômicos.
+
+**Tópicos:** estimação de impacto econômico do turismo, dados de produção pesqueira, análise insumo-produto regional.
+
+---
+
+### Transformação Digital na Administração Pública
+
+Análise dos processos de digitalização no setor público brasileiro: condições habilitadoras, barreiras, resultados e efeitos sobre a qualidade dos serviços.
+
+**Tópicos:** governo digital, interoperabilidade de sistemas, open data, indicadores de maturidade digital.
+
+---
+
+## Metodologia
+
+Os projetos deste laboratório utilizam, conforme cada problema:
+
+- Análise exploratória de dados
+- Econometria (regressão, painel, avaliação de impacto)
+- Análise textual e PLN básico
+- Revisão sistemática de literatura
+- Documentos reproduzíveis em Quarto
+
+---
+
+## Publicações e produções
+
+Consulte a [página de publicações](publicacoes.qmd) para a lista de produções acadêmicas.

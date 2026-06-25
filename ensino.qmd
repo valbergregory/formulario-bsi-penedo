@@ -1,0 +1,168 @@
+---
+title: "Ensino e Materiais"
+description: "Materiais didáticos para estudantes e pesquisadores em análise de dados, programação e pesquisa."
+---
+
+Esta página reúne materiais didáticos em desenvolvimento para estudantes e pesquisadores. Os conteúdos serão publicados progressivamente ao longo de 2026–2027.
+
+::: {.callout-important}
+**Aviso de privacidade:** Este espaço não publica provas, notas individuais, dados de alunos ou documentos institucionais restritos. Os materiais aqui disponíveis destinam-se ao uso público e educacional.
+:::
+
+---
+
+## Introdução ao R
+
+Materiais para quem está começando com R, com foco em análise de dados para pesquisa em Ciências Sociais, Economia e Direito.
+
+**O que será abordado:**
+- Instalação do R e RStudio
+- Tipos de dados e estruturas básicas
+- Importação de dados (CSV, Excel, bases públicas)
+- Estatística descritiva
+- Visualizações com `ggplot2`
+- Regressão linear
+
+**Status:** em desenvolvimento → [ver exemplos no Laboratório R](labs/r/index.qmd)
+
+---
+
+## Introdução ao Python
+
+Python para pesquisadores sem formação em computação.
+
+**O que será abordado:**
+- Instalação e ambientes virtuais
+- Tipos, listas, dicionários e laços
+- `pandas` para análise de dados
+- Visualizações básicas com `matplotlib`
+- Importação de dados do IBGE e outras fontes
+
+**Status:** em desenvolvimento → [ver exemplos no Laboratório Python](labs/python/index.qmd)
+
+---
+
+## SQL para Pesquisadores
+
+Aprender SQL abre acesso a uma quantidade enorme de bases de dados públicas.
+
+**O que será abordado:**
+- Estrutura de um banco de dados relacional
+- `SELECT`, `WHERE`, `GROUP BY`, `JOIN`
+- Análise de dados públicos com SQL
+- Integração SQL + Python e SQL + R
+
+**Status:** planejado → [ver introdução no Laboratório SQL](labs/sql/index.qmd)
+
+---
+
+## Econometria Aplicada
+
+Material de apoio para estudantes que já dominam regressão linear e querem avançar.
+
+**O que será abordado:**
+- Diagnóstico de modelos (heterocedasticidade, multicolinearidade)
+- Dados em painel: efeitos fixos e aleatórios
+- Variável instrumental (IV)
+- Diferenças em diferenças (DiD)
+- Regressão com descontinuidade (RDD)
+
+**Status:** planejado
+
+---
+
+## LaTeX e Quarto
+
+Ferramentas para escrever documentos acadêmicos de qualidade.
+
+**O que será abordado:**
+- LaTeX: equações, tabelas, referências
+- Quarto: documentos reproduzíveis com R e Python
+- BibTeX e Zotero para gerenciamento de referências
+- Templates para artigos, TCCs e relatórios
+
+**Status:** em uso neste laboratório
+
+---
+
+## Metodologia Científica
+
+Material voltado a estudantes de TCC e iniciação científica.
+
+**O que será abordado:**
+- Tipos de pesquisa e design metodológico
+- Como formular uma boa pergunta de pesquisa
+- Revisão de literatura sistemática e narrativa
+- Citação e integridade acadêmica
+- Reprodutibilidade: o que é e por que importa
+
+**Status:** planejado
+
+---
+
+## Análise Financeira
+
+Para estudantes de Administração, Economia e Direito Empresarial.
+
+**O que será abordado:**
+- Interpretação de demonstrações financeiras
+- Indicadores de liquidez, rentabilidade e endividamento
+- Análise fundamentalista básica
+- Python e R para análise financeira
+
+**Status:** em desenvolvimento → [ver Laboratório Python](labs/python/analise-financeira.qmd)
+
+---
+
+## Direito e Tecnologia
+
+Material introdutório para estudantes de Direito.
+
+**O que será abordado:**
+- O que é IA e como ela funciona (sem código)
+- LGPD: conceitos e aplicação prática
+- Contratos eletrônicos e assinatura digital
+- Responsabilidade civil por algoritmos
+- Prova digital em processos judiciais
+
+**Status:** planejado
+
+---
+
+## Materiais para TCC
+
+Orientações específicas para estudantes em fase de TCC.
+
+**O que será abordado:**
+- Como escolher o tema e a metodologia
+- Estrutura de um bom TCC em Sistemas de Informação
+- Ferramentas: LaTeX, Quarto, Zotero, GitHub
+- Checklist de entrega
+
+**Status:** planejado
+
+---
+
+## Reprodutibilidade Científica
+
+Por que a ciência reproduzível importa e como praticar.
+
+**O que será abordado:**
+- Crise de reprodutibilidade na ciência
+- Boas práticas: nomenclatura, versionamento, documentação
+- GitHub para pesquisadores
+- Open Science e dados abertos
+
+**Status:** em desenvolvimento → [ver posts no Diário](posts/index.qmd)
+
+---
+
+## Como acessar os materiais
+
+Os materiais são publicados progressivamente neste site. Quando disponíveis:
+
+- **Documentos Quarto:** abertos no próprio site
+- **Código:** disponível no [repositório GitHub](https://github.com/valbergregory/valber-lab)
+- **Dados:** disponibilizados em `data/` quando de domínio público
+
+Para ser notificado de novos materiais, acompanhe o repositório no GitHub (botão "Watch").

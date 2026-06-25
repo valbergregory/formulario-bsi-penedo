@@ -1,0 +1,106 @@
+---
+title: "Política de Uso e Privacidade"
+description: "Condições de uso, privacidade e proteção de dados neste laboratório."
+toc: true
+---
+
+*Última atualização: agosto de 2026*
+
+---
+
+## 1. Sobre este documento
+
+Este documento descreve as políticas de uso e privacidade do **Laboratório de Direito, Economia e Tecnologia** (`valber-lab`), hospedado em GitHub Pages. Leia com atenção antes de utilizar os materiais, dados e exemplos disponibilizados.
+
+---
+
+## 2. Coleta de dados
+
+### 2.1 Dados coletados pelo GitHub Pages
+
+Este site é hospedado pelo GitHub Pages. O GitHub pode coletar dados de acesso (logs de servidor, endereços IP) conforme sua [Política de Privacidade](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement).
+
+### 2.2 Ausência de rastreamento ativo
+
+Este site **não utiliza cookies de rastreamento**, **não coleta dados pessoais de visitantes** e **não utiliza scripts de análise de comportamento**. Caso o Google Analytics seja ativado futuramente, esta seção será atualizada com informações completas.
+
+---
+
+## 3. Uso de dados nos exemplos
+
+### 3.1 Dados simulados
+
+A maioria dos exemplos de código e análise deste laboratório utiliza **dados fictícios gerados por simulação**, sem qualquer correspondência com pessoas ou processos reais.
+
+### 3.2 Dados públicos
+
+Quando dados reais são utilizados, eles provêm exclusivamente de fontes de **domínio público**: IBGE, IPEA, STN, CNJ, dados.gov.br e outros portais governamentais de dados abertos.
+
+### 3.3 Dados pessoais
+
+Este laboratório **não publica dados pessoais de indivíduos identificados ou identificáveis**, incluindo:
+- dados de alunos ou orientandos
+- dados de partes de processos judiciais
+- informações de servidores públicos individualizados
+
+Exemplos que envolvam documentos jurídicos são **obrigatoriamente anonimizados** antes da publicação.
+
+---
+
+## 4. Uso dos materiais
+
+### 4.1 Código-fonte
+
+O código-fonte deste laboratório está disponível sob a [Licença MIT](https://github.com/valbergregory/valber-lab/blob/main/LICENSE). Você pode usar, copiar, modificar e distribuir o código, desde que mantenha o aviso de copyright.
+
+### 4.2 Textos e materiais acadêmicos
+
+Os textos, análises, tutoriais e materiais didáticos publicados neste laboratório são de autoria de **Valber Gregory Barbosa Costa Bezerra Santos** e têm condições específicas de uso:
+
+- **Uso educacional e pesquisa:** permitido com citação adequada
+- **Reprodução parcial:** permitida com citação da fonte
+- **Reprodução integral:** requer autorização prévia por escrito
+- **Uso comercial:** não permitido sem autorização expressa
+
+**Como citar:**
+```
+SANTOS, Valber Gregory Barbosa Costa Bezerra. Laboratório de Direito,
+Economia e Tecnologia. Penedo: UFAL, 2026. Disponível em:
+https://valbergregory.github.io/valber-lab. Acesso em: [data].
+```
+
+---
+
+## 5. Responsabilidades
+
+### 5.1 Exemplos didáticos
+
+Os exemplos de código e análise são produzidos com fins exclusivamente **didáticos e ilustrativos**. Não devem ser utilizados como base para decisões jurídicas, financeiras ou de políticas públicas sem a devida adaptação e validação por profissional habilitado.
+
+### 5.2 Limitações
+
+O laboratório é mantido por um único pesquisador, sem equipe dedicada. Erros podem ocorrer. Se você identificar um erro técnico, conceitual ou metodológico, abra uma [issue no GitHub](https://github.com/valbergregory/valber-lab/issues).
+
+---
+
+## 6. Segurança
+
+Este laboratório adota as seguintes práticas de segurança:
+
+- Nenhuma credencial, token ou chave de API é publicada no repositório
+- O arquivo `.gitignore` exclui arquivos de ambiente e configuração sensível
+- Pull requests são revisados antes de serem incorporados à branch principal
+
+Para relatar vulnerabilidades de segurança, consulte o arquivo [SECURITY.md](https://github.com/valbergregory/valber-lab/blob/main/SECURITY.md).
+
+---
+
+## 7. Alterações nesta política
+
+Esta política pode ser atualizada. A data da última revisão está indicada no início do documento. Alterações significativas serão registradas no [CHANGELOG.md](https://github.com/valbergregory/valber-lab/blob/main/CHANGELOG.md).
+
+---
+
+## 8. Contato
+
+Dúvidas sobre privacidade e uso dos materiais: consulte a [página de contato](contato.qmd).

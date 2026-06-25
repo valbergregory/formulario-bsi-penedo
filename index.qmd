@@ -1,0 +1,211 @@
+---
+title: "Laboratório de Direito, Economia e Tecnologia"
+subtitle: "Portfólio acadêmico e tecnológico de Valber Gregory"
+description: "Projetos, pesquisa e aprendizagem em análise de dados, econometria, programação e sistemas aplicados ao Direito, à Economia e às Políticas Públicas."
+page-layout: full
+toc: false
+---
+
+::: {.hero-section}
+
+# Laboratório de Direito, Economia e Tecnologia {.hero-title}
+
+**Valber Gregory Barbosa Costa Bezerra Santos**
+Professor · UFAL Penedo · Analista Judiciário · Doutor em Economia
+
+::: {.hero-subtitle}
+*Direito, Economia e Tecnologia aplicados à pesquisa, ao ensino e à solução de problemas públicos e sociais.*
+
+Este laboratório documenta uma trajetória de aprendizagem em análise de dados, econometria, bancos de dados, programação e desenvolvimento de sistemas.
+:::
+
+<br>
+
+[Ver Projetos](projetos.qmd){.btn .btn-primary .me-2}
+[Sobre Mim](sobre.qmd){.btn .btn-outline-secondary .me-2}
+[Trilha 2026–2027](trilha.qmd){.btn .btn-outline-secondary}
+
+:::
+
+---
+
+> **Em inglês / In English:** This is the academic and technology portfolio of Valber Gregory (Professor at UFAL · Judicial Analyst · PhD in Economics). It documents an interdisciplinary learning path combining Law, Economics, Data Analysis, and Information Systems. Content is primarily in Portuguese.
+
+---
+
+## O que você encontrará aqui
+
+Este laboratório reúne **projetos, materiais didáticos e registros de evolução** organizados em torno de uma trajetória progressiva: da análise exploratória de dados ao desenvolvimento de aplicativos, APIs e sistemas integrados.
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-4}
+### Laboratórios
+
+Exemplos executáveis comentados em **R**, **Python**, **SQL**, **C++** e **Java**. Cada laboratório parte de problemas reais das áreas de Direito, Economia e Administração Pública.
+
+[→ Laboratório R](labs/r/index.qmd)
+[→ Laboratório Python](labs/python/index.qmd)
+[→ Laboratório SQL](labs/sql/index.qmd)
+:::
+
+::: {.g-col-12 .g-col-md-4}
+### Projetos
+
+Uma trilha de 18 projetos desenvolvidos entre agosto de 2026 e julho de 2027, cobrindo análise de dados, econometria, ferramentas jurídicas, observatórios regionais e APIs públicas.
+
+[→ Ver todos os projetos](projetos.qmd)
+:::
+
+::: {.g-col-12 .g-col-md-4}
+### Pesquisa e Ensino
+
+Linhas de pesquisa em Análise Econômica do Direito, inteligência artificial no Judiciário, LGPD e desenvolvimento regional. Materiais didáticos para estudantes e pesquisadores.
+
+[→ Pesquisa](pesquisa.qmd)
+[→ Ensino e Materiais](ensino.qmd)
+:::
+
+:::
+
+---
+
+## Áreas de Atuação
+
+```{=html}
+<div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem;">
+  <span class="badge-status badge-em-dev">Análise de Dados</span>
+  <span class="badge-status badge-em-dev">Econometria</span>
+  <span class="badge-status badge-em-dev">Direito Digital</span>
+  <span class="badge-status badge-em-dev">IA e Judiciário</span>
+  <span class="badge-status badge-em-dev">Governança Algorítmica</span>
+  <span class="badge-status badge-em-dev">LGPD</span>
+  <span class="badge-status badge-em-dev">Economia Regional</span>
+  <span class="badge-status badge-em-dev">Setor Público</span>
+  <span class="badge-status badge-em-dev">Desenvolvimento Regional</span>
+  <span class="badge-status badge-em-dev">Sistemas de Informação</span>
+</div>
+```
+
+## Tecnologias Estudadas
+
+```{=html}
+<div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:1rem;">
+  <span class="tag-tech">R</span>
+  <span class="tag-tech">Python</span>
+  <span class="tag-tech">SQL</span>
+  <span class="tag-tech">C++</span>
+  <span class="tag-tech">Java</span>
+  <span class="tag-tech">Quarto</span>
+  <span class="tag-tech">Git</span>
+  <span class="tag-tech">GitHub Actions</span>
+  <span class="tag-tech">pandas</span>
+  <span class="tag-tech">ggplot2</span>
+  <span class="tag-tech">tidyverse</span>
+  <span class="tag-tech">LaTeX</span>
+</div>
+```
+
+---
+
+## Projetos em Destaque
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-6}
+::: {.card-projeto}
+**[Laboratório de Direito, Economia e Tecnologia](projetos.qmd)**
+
+<span class="badge-status badge-em-dev">Em desenvolvimento</span>
+<span class="tag-tech">Quarto</span> <span class="tag-tech">R</span> <span class="tag-tech">Python</span>
+
+Este próprio site: portfólio acadêmico integrado com laboratórios, diário de evolução e projetos progressivos. Agosto 2026 – contínuo.
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6}
+::: {.card-projeto}
+**[Painel de Indicadores Econômicos Municipais](projetos.qmd)**
+
+<span class="badge-status badge-planejado">Planejado</span>
+<span class="tag-tech">Python</span> <span class="tag-tech">pandas</span>
+
+Painel interativo com indicadores socioeconômicos municipais para suporte a decisões públicas. Previsão: outubro 2026.
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6}
+::: {.card-projeto}
+**[SQL para Pesquisadores](projetos.qmd)**
+
+<span class="badge-status badge-planejado">Planejado</span>
+<span class="tag-tech">SQL</span> <span class="tag-tech">PostgreSQL</span>
+
+Guia prático de SQL com foco em pesquisa acadêmica e análise de dados públicos. Previsão: setembro 2026.
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6}
+::: {.card-projeto}
+**[Observatório da Economia Pesqueira do São Francisco](projetos.qmd)**
+
+<span class="badge-status badge-planejado">Planejado</span>
+<span class="tag-tech">R</span> <span class="tag-tech">Python</span>
+
+Dados, análises e visualizações sobre a economia pesqueira do Baixo São Francisco. Previsão: fevereiro 2027.
+:::
+:::
+
+:::
+
+[→ Ver todos os 18 projetos planejados](projetos.qmd)
+
+---
+
+## Trilha 2026–2027
+
+A evolução esperada neste laboratório segue uma progressão deliberada:
+
+```
+Análise de Dados  →  Econometria  →  SQL e Modelagem  →
+Aplicativos  →  APIs  →  Algoritmos  →  Sistemas Integrados
+```
+
+| Período | Foco | Linguagem |
+|---------|------|-----------|
+| Ago–Set 2026 | Portfólio, estatística descritiva, SQL | R, Python, SQL |
+| Out–Nov 2026 | Econometria, dados públicos, painéis | R, Python |
+| Dez 2026–Jan 2027 | Ferramentas jurídicas, análise financeira | Python, Java |
+| Fev–Mar 2027 | Observatórios regionais, APIs | Python, SQL |
+| Abr–Mai 2027 | Algoritmos, métodos numéricos | C++, Python |
+| Jun–Jul 2027 | Sistemas integrados, revisão e publicação | Múltiplas |
+
+[→ Ver trilha completa](trilha.qmd)
+
+---
+
+## Diário de Evolução
+
+Postagens recentes:
+
+- **[Por que criar um laboratório de Direito, Economia e Tecnologia?](posts/2026-08-01-criacao-laboratorio/index.qmd)**
+  *01 ago 2026 · 5 min*
+
+- **[Minha trilha de aprendizagem em R, Python, SQL, C++ e Java](posts/2026-08-08-trilha-linguagens/index.qmd)**
+  *08 ago 2026 · 7 min*
+
+- **[Como pretendo documentar projetos reproduzíveis no GitHub](posts/2026-08-15-projetos-reproduziveis/index.qmd)**
+  *15 ago 2026 · 6 min*
+
+[→ Ver todas as postagens](posts/index.qmd)
+
+---
+
+::: {.callout-note}
+**Conteúdo em desenvolvimento contínuo.** Este laboratório documenta uma trajetória em andamento. Novos projetos, laboratórios e materiais são adicionados progressivamente entre agosto de 2026 e julho de 2027. Algumas páginas podem estar incompletas ou marcadas como planejadas.
+:::
+
+---
+
+*Links: [GitHub](https://github.com/valbergregory) · [Currículo Lattes](#) · [Contato](contato.qmd)*
+*Os links de currículo serão atualizados quando disponíveis.*

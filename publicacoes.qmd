@@ -1,0 +1,89 @@
+---
+title: "Publicações e Produção Acadêmica"
+description: "Produções acadêmicas, artigos, relatórios e outras contribuições científicas."
+---
+
+::: {.callout-note}
+Esta página será preenchida progressivamente com produções acadêmicas reais. Por enquanto, apresenta a estrutura e as categorias previstas. Não são listadas publicações fictícias ou incompletas.
+:::
+
+---
+
+## Artigos em periódicos
+
+*Produções a serem listadas conforme publicadas.*
+
+**Formato esperado:**
+> **Autor(es).** (Ano). Título do artigo. *Nome do Periódico*, volume(número), pp. xxx–yyy. DOI: [link]
+
+---
+
+## Capítulos de livro
+
+*A serem adicionados conforme publicados.*
+
+---
+
+## Dissertação e tese
+
+**Mestrado em Economia**
+: *[Título a ser inserido]*, *[Instituição a ser inserida]*, *[Ano]*.
+  Orientador: *[a inserir]*
+
+**Doutorado em Economia**
+: *[Título a ser inserido]*, *[Instituição a ser inserida]*, *[Ano]*.
+  Orientador: *[a inserir]*
+
+::: {.callout-note}
+Os detalhes da dissertação e da tese serão inseridos quando o autor autorizar a publicação das informações institucionais neste espaço.
+:::
+
+---
+
+## Relatórios e documentos técnicos
+
+*A serem adicionados conforme produzidos.*
+
+---
+
+## Apresentações e participações em eventos
+
+*A serem registradas conforme realizadas.*
+
+---
+
+## Projetos de pesquisa
+
+*Projetos com aprovação institucional ou financiamento externo serão listados aqui.*
+
+---
+
+## Produção didática e materiais abertos
+
+Materiais educacionais produzidos para o laboratório e disponibilizados publicamente:
+
+- **Laboratório R:** exemplos de estatística descritiva e regressão linear → [acessar](labs/r/index.qmd)
+- **Laboratório Python:** tratamento de dados e análise financeira → [acessar](labs/python/index.qmd)
+- **Laboratório SQL:** introdução a bancos de dados para pesquisadores → [acessar](labs/sql/index.qmd)
+
+---
+
+## Como citar
+
+Se você utilizar conteúdo deste laboratório em sua pesquisa, cite adequadamente:
+
+```
+SANTOS, Valber Gregory Barbosa Costa Bezerra. Laboratório de Direito,
+Economia e Tecnologia. Penedo: UFAL, 2026. Disponível em:
+https://valbergregory.github.io/valber-lab. Acesso em: [data].
+```
+
+Os textos e materiais acadêmicos publicados neste laboratório têm condições específicas de uso. Consulte a [política de privacidade e uso](privacidade.qmd) para mais informações.
+
+---
+
+## Currículo acadêmico
+
+O currículo completo estará disponível na Plataforma Lattes do CNPq. Link a ser inserido quando disponível.
+
+[→ Currículo Lattes (a inserir)](#)

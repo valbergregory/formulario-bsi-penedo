@@ -1,0 +1,96 @@
+---
+title: "Sobre"
+description: "Formação, atuação profissional, interesses de pesquisa e objetivos deste laboratório."
+---
+
+> **In English:** Valber Gregory is a professor at the Federal University of Alagoas (UFAL – Penedo campus), where he teaches in the Information Systems undergraduate program. He also serves as a Judicial Analyst in Economics at the Court of Justice of Alagoas (TJAL). He holds a PhD and Master's degree in Economics, plus undergraduate degrees in Law and Economics. His research interests bridge Law, Economics, and Information Systems — especially algorithmic governance, AI in the judiciary, data protection (LGPD), applied econometrics, and regional development.
+
+---
+
+## Formação
+
+Construí minha formação de maneira deliberadamente interdisciplinar, acreditando que os problemas contemporâneos — especialmente aqueles que envolvem tecnologia, instituições e políticas públicas — raramente cabem em uma única disciplina.
+
+- **Doutorado em Economia** — *[instituição a ser inserida]*
+- **Mestrado em Economia** — *[instituição a ser inserida]*
+- **Graduação em Direito** — *[instituição a ser inserida]*
+- **Graduação em Economia** — *[instituição a ser inserida]*
+
+::: {.callout-note}
+Os vínculos institucionais e as datas exatas serão incluídos progressivamente conforme o laboratório for atualizado.
+:::
+
+---
+
+## Atuação Profissional
+
+### Universidade Federal de Alagoas — UFAL Penedo
+
+Sou professor na Unidade Educacional de Penedo da UFAL, vinculado ao curso de **Bacharelado em Sistemas de Informação**. Minha atuação docente integra formação técnica e reflexão crítica sobre o papel da tecnologia na sociedade.
+
+No curso, tenho contribuído com:
+
+- disciplinas relacionadas a **análise de dados e estatística aplicada**;
+- orientação de trabalhos de conclusão de curso;
+- iniciativas de **metodologia científica e reprodutibilidade**;
+- articulação entre programação, Direito e Economia.
+
+### Tribunal de Justiça de Alagoas — TJAL
+
+Atuo como **analista judiciário na área de Economia**, com funções de **assessoria judicial**. Essa experiência me coloca em contato diário com os desafios reais do Poder Judiciário: gestão de processos, análise de dados, interpretação de normas e o impacto crescente da tecnologia nas decisões judiciais.
+
+---
+
+## Interesses de Pesquisa
+
+Minha agenda de pesquisa é marcada pela integração entre três grandes campos:
+
+**Direito e Tecnologia**
+: Análise Econômica do Direito, Direito Digital, regulação de inteligência artificial, governança algorítmica, proteção de dados e LGPD, IA generativa no Poder Judiciário, transformação digital na Administração Pública.
+
+**Econometria e Análise de Dados**
+: Econometria aplicada, avaliação de políticas públicas, análise financeira, ciência de dados para o setor público, métodos quantitativos em Direito.
+
+**Economia Regional e Setorial**
+: Desenvolvimento regional, economia do Baixo São Francisco, turismo, economia pesqueira, economia da educação, cidades inteligentes, inovação e empreendedorismo.
+
+---
+
+## Competências Técnicas em Desenvolvimento
+
+Este laboratório documenta minha evolução técnica. As linguagens e ferramentas que estou desenvolvendo sistematicamente entre 2026 e 2027:
+
+| Tecnologia | Situação | Foco |
+|------------|----------|------|
+| R | Em desenvolvimento | Análise de dados, econometria, ggplot2, tidyverse |
+| Python | Em desenvolvimento | Pandas, análise financeira, automação |
+| SQL | Em desenvolvimento | Modelagem relacional, consultas, análise pública |
+| C++ | Iniciando | Métodos numéricos, algoritmos |
+| Java | Iniciando | Sistemas, encapsulamento, APIs |
+| Quarto | Em uso | Documentos reproduzíveis, sites, relatórios |
+| Git/GitHub | Em uso | Controle de versão, colaboração |
+| GitHub Actions | Em uso | CI/CD, publicação automatizada |
+| LaTeX | Em uso | Artigos acadêmicos, documentos formais |
+
+---
+
+## Visão Interdisciplinar
+
+Acredito que a principal contribuição de um profissional formado simultaneamente em Direito, Economia e Sistemas de Informação é a capacidade de **traduzir problemas** entre linguagens disciplinares: transformar uma questão jurídica em um modelo quantificável, interpretar uma análise econométrica em termos normativos, ou projetar um sistema de informação que respeite princípios constitucionais.
+
+Essa visão orienta tanto minha docência quanto minha pesquisa: não busco dominar uma única ferramenta, mas construir um **repertório integrado** capaz de enfrentar problemas complexos do mundo real.
+
+---
+
+## Objetivos do Laboratório
+
+Este laboratório serve a quatro propósitos complementares:
+
+1. **Portfólio público:** registrar, de forma transparente e verificável, minha evolução técnica e científica;
+2. **Material didático:** oferecer exemplos reais e comentados que estudantes e pesquisadores possam utilizar e adaptar;
+3. **Pesquisa aplicada:** documentar projetos de análise de dados com reprodutibilidade e rigor metodológico;
+4. **Reflexão sobre tecnologia:** contribuir para o debate sobre o uso responsável de dados e sistemas nas áreas de Direito, Economia e Políticas Públicas.
+
+---
+
+*Links: [GitHub](https://github.com/valbergregory) · [Currículo Lattes (a inserir)](#) · [Contato](contato.qmd) · [Projetos](projetos.qmd)*
