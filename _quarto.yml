@@ -1,0 +1,123 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "Laboratório de Direito, Economia e Tecnologia"
+  description: "Portfólio acadêmico e tecnológico de Valber Gregory — projetos, pesquisa e aprendizagem em análise de dados, econometria, programação e Direito."
+  site-url: "https://valbergregory.github.io/valber-lab"
+  favicon: "assets/images/favicon.ico"
+  google-analytics: ""
+  open-graph: true
+
+  navbar:
+    left:
+      - text: "Início"
+        href: index.qmd
+      - text: "Sobre"
+        href: sobre.qmd
+      - text: "Projetos"
+        href: projetos.qmd
+      - text: "Trilha"
+        href: trilha.qmd
+      - text: "Laboratórios"
+        menu:
+          - text: "Laboratório R"
+            href: labs/r/index.qmd
+          - text: "Laboratório Python"
+            href: labs/python/index.qmd
+          - text: "Laboratório SQL"
+            href: labs/sql/index.qmd
+          - text: "Laboratório C++"
+            href: labs/cpp/index.qmd
+          - text: "Laboratório Java"
+            href: labs/java/index.qmd
+      - text: "Pesquisa"
+        href: pesquisa.qmd
+      - text: "Ensino"
+        href: ensino.qmd
+      - text: "Mais"
+        menu:
+          - text: "Publicações"
+            href: publicacoes.qmd
+          - text: "Diário de Evolução"
+            href: posts/index.qmd
+          - text: "Contato"
+            href: contato.qmd
+          - text: "Privacidade"
+            href: privacidade.qmd
+    right:
+      - icon: github
+        href: "https://github.com/valbergregory"
+        aria-label: GitHub
+      - icon: envelope
+        href: contato.qmd
+        aria-label: Contato
+
+  sidebar: false
+
+  page-footer:
+    left: |
+      © 2026 Valber Gregory Barbosa Costa Bezerra Santos.
+      Código sob [licença MIT](LICENSE).
+      Textos e materiais acadêmicos com condições específicas de uso.
+    right: |
+      Construído com [Quarto](https://quarto.org) ·
+      [GitHub](https://github.com/valbergregory/valber-lab) ·
+      [Privacidade](privacidade.qmd)
+
+  search: true
+
+  repo-url: "https://github.com/valbergregory/valber-lab"
+  repo-actions: [issue]
+
+  image: "assets/images/og-image.png"
+
+  twitter-card:
+    creator: "@valbergregory"
+    card-style: summary
+
+format:
+  html:
+    theme:
+      light: [cosmo, styles.css]
+      dark: [darkly, styles.css]
+    css: styles.css
+    toc: true
+    toc-depth: 3
+    toc-expand: 2
+    number-sections: false
+    smooth-scroll: true
+    code-fold: false
+    code-overflow: wrap
+    code-copy: true
+    highlight-style: github
+    link-external-icon: true
+    link-external-newwindow: true
+    fig-align: center
+    fig-cap-location: bottom
+    html-math-method: katex
+    df-print: paged
+    grid:
+      sidebar-width: 250px
+      body-width: 900px
+      margin-width: 200px
+
+execute:
+  freeze: auto
+  echo: true
+  warning: false
+  message: false
+  cache: false
+
+knitr:
+  opts_chunk:
+    comment: "#>"
+    fig.width: 7
+    fig.height: 5
+
+jupyter: python3
+
+bibliography: []
+
+lang: pt-BR
