@@ -1,0 +1,163 @@
+---
+title: "Como pretendo documentar projetos reproduzíveis no GitHub"
+date: "2026-08-15"
+description: "Discuto o conceito de reprodutibilidade científica, as ferramentas que utilizarei e os padrões que pretendo seguir neste laboratório."
+categories: [reprodutibilidade, GitHub, metodologia, boas práticas]
+author: "Valber Gregory"
+---
+
+**Resumo:** Explico o que significa, na prática, um projeto reproduzível — e como pretendo implementar essa filosofia nos projetos deste laboratório, usando Git, GitHub Actions, Quarto, `renv` e ambientes Python.
+
+**Tempo estimado de leitura:** 6 minutos | **Categorias:** reprodutibilidade, GitHub, metodologia
+
+---
+
+## O problema que a reprodutibilidade resolve
+
+Imagine que você lê um artigo científico fascinante. Os dados parecem sólidos, a metodologia é clara, as conclusões são instigantes. Você quer verificar um coeficiente, explorar uma tabela alternativa, testar a robustez dos resultados.
+
+Então você descobre: o código não foi publicado. Os dados estão "disponíveis mediante solicitação". O autor não responde e-mails. O artigo, publicado há dois anos, é essencialmente irreproduzível.
+
+Isso não é uma raridade — é a norma. A *crise de reprodutibilidade* das ciências empíricas foi documentada em múltiplos campos: psicologia, medicina, economia, ecologia.
+
+Este laboratório existe, em parte, como uma resposta a esse problema. Cada projeto que publico aqui deve ser reproduzível por qualquer pessoa com acesso ao repositório.
+
+---
+
+## O que é um projeto reproduzível?
+
+Um projeto é reproduzível quando:
+
+1. **O código está disponível** — não apenas descrito em pseudocódigo
+2. **Os dados estão disponíveis** — ou podem ser obtidos por meio de instruções claras
+3. **O ambiente está especificado** — versões de pacotes e linguagens documentadas
+4. **A execução é documentada** — qualquer pessoa pode reproduzir os resultados com comandos explícitos
+
+Reprodutibilidade não significa que os resultados serão idênticos em qualquer computador para sempre — isso é *replicabilidade*, um objetivo mais ambicioso. Reprodutibilidade significa que, com as mesmas ferramentas e dados, você obtém os mesmos resultados.
+
+---
+
+## Ferramentas que utilizarei
+
+### Git e GitHub
+
+O controle de versão com Git é a fundação de tudo. Cada mudança significativa é registrada com um commit. A branch principal (`main`) contém sempre o estado funcional mais recente.
+
+Commits no padrão **Conventional Commits**:
+```
+feat: adicionar análise de regressão com dados do IBGE
+fix: corrigir cálculo de índice de Gini
+docs: atualizar instruções de reprodução
+```
+
+### GitHub Actions
+
+O CI/CD automatiza a verificação de que o código funciona. Para cada push na branch principal:
+- Os testes Python são executados
+- O site Quarto é renderizado
+- O resultado é publicado automaticamente
+
+Se algo quebrar, o workflow falha visivelmente. Isso impede que código quebrado chegue ao portfólio público.
+
+### Quarto
+
+Quarto permite integrar narrativa, código e resultados em um único documento. Quando o documento é renderizado, o código é executado — os resultados que você vê no site são os mesmos que o código produz.
+
+O parâmetro `freeze: auto` salva os resultados de análises pesadas, evitando re-execução desnecessária. Mas o código e os resultados permanecem sincronizados.
+
+### `renv` para R
+
+O `renv` captura as versões exatas de todos os pacotes R usados no projeto e as salva em `renv.lock`. Para reproduzir o ambiente R:
+
+```r
+renv::restore()
+```
+
+Isso garante que a mesma versão do `ggplot2` usada na análise original será instalada — mesmo que anos depois.
+
+### Ambientes virtuais Python
+
+Para Python, o `requirements.txt` especifica as dependências:
+
+```bash
+python -m venv venv
+source venv/bin/activate      # Linux/macOS
+pip install -r requirements.txt
+```
+
+---
+
+## O padrão de estrutura de projetos
+
+Cada projeto seguirá uma estrutura previsível:
+
+```
+projeto/
+├── README.md          # O que é, como executar, como citar
+├── data/
+│   ├── raw/           # Dados originais, não modificados
+│   ├── processed/     # Dados após transformação
+│   └── README.md      # Descrição dos dados e fontes
+├── scripts/           # Scripts de limpeza e transformação
+├── analysis/          # Análises principais (Quarto ou .py)
+├── output/            # Tabelas e figuras geradas
+└── requirements.txt   # Dependências Python
+```
+
+Para projetos com R, adiciona-se `renv/` e `renv.lock`.
+
+---
+
+## O que vai nos dados públicos e o que não vai
+
+**Vai para o repositório:**
+- Dados públicos de pequeno porte (< 50 MB)
+- Dados simulados gerados por código
+- Scripts de download de dados públicos
+
+**Não vai para o repositório:**
+- Dados com informações pessoais identificáveis
+- Dados processuais sigilosos
+- Qualquer dado de acesso restrito
+
+**Para dados grandes ou restritos:**
+- O `README.md` explica como obter os dados
+- Os scripts de processamento são publicados
+- Os resultados em forma agregada podem ser publicados
+
+---
+
+## Checklist de reprodutibilidade
+
+Antes de dar um projeto como concluído, verifico:
+
+- [ ] O `README.md` explica como reproduzir os resultados
+- [ ] As dependências estão documentadas (`requirements.txt`, `renv.lock`)
+- [ ] O código executa sem erros após `git clone` e instalação das dependências
+- [ ] Os dados estão disponíveis ou há instruções para obtê-los
+- [ ] Os testes passam no GitHub Actions
+- [ ] Os resultados no site correspondem ao que o código produz
+
+---
+
+## Limitações honestas
+
+Reprodutibilidade total é difícil. Algumas limitações que tenho ciência:
+
+- APIs de dados públicos mudam sem aviso
+- Pacotes com versões fixas podem criar conflitos futuros
+- Análises com dados restritos não podem ser totalmente reproduzíveis
+- Modelos de linguagem (LLMs) não são determinísticos por padrão
+
+Onde a reprodutibilidade total não for possível, documento claramente os obstáculos e ofereço o máximo possível de transparência sobre a metodologia.
+
+---
+
+## Próximos passos
+
+- Aplicar este padrão ao projeto SQL para Pesquisadores (setembro 2026)
+- Criar o checklist de reprodutibilidade como documento no repositório
+- Documentar os primeiros resultados verificados pelo GitHub Actions
+
+[→ Ver a estrutura do projeto no GitHub](https://github.com/valbergregory/valber-lab)
+[→ Ver a trilha de projetos](../../projetos.qmd)

@@ -1,0 +1,13 @@
+---
+title: "Diário de Evolução"
+description: "Reflexões, aprendizados e registros da trajetória do laboratório."
+listing:
+  contents: .
+  sort: "date desc"
+  type: default
+  categories: true
+  sort-ui: false
+  filter-ui: false
+  fields: [date, title, description, categories, reading-time]
+page-layout: full
+---

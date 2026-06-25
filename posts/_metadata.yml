@@ -1,0 +1,5 @@
+freeze: auto
+format:
+  html:
+    toc: true
+    reading-time: true
