@@ -1,0 +1,23 @@
+# Laboratório de Direito, Economia e Tecnologia — valber-lab
+# Dependências Python
+# Atualize com: pip install -r requirements.txt
+
+# Análise de dados
+pandas>=2.0,<4.0
+numpy>=1.24,<3.0
+
+# Visualização
+matplotlib>=3.7,<4.0
+
+# Testes
+pytest>=7.4,<9.0
+
+# Exportação Excel (opcional — comentado para não aumentar build)
+# openpyxl>=3.1,<4.0
+
+# PLN (para módulo futuro de anonimização de documentos)
+# spacy>=3.6,<4.0
+
+# APIs (para módulo futuro)
+# fastapi>=0.100,<1.0
+# uvicorn>=0.22,<1.0

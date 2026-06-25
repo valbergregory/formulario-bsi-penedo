@@ -1,0 +1,67 @@
+# ── Ambientes Python ──────────────────────────────────
+venv/
+.venv/
+env/
+.env/
+__pycache__/
+*.py[cod]
+*.pyo
+.python-version
+pip-log.txt
+
+# ── Ambiente R ────────────────────────────────────────
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+renv/library/
+renv/staging/
+
+# ── Quarto / Knitr ────────────────────────────────────
+# _site é publicado via Actions — não versionar na branch principal
+_site/
+.quarto/
+*_cache/
+*_files/
+.jupyter_cache/
+
+# ── Credenciais e segredos ────────────────────────────
+.env
+*.env
+.env.local
+.env.*.local
+secrets.yml
+credentials.json
+*.pem
+*.key
+*.p12
+
+# ── Dados sensíveis ───────────────────────────────────
+data/raw/*.csv
+data/raw/*.xlsx
+data/raw/*.json
+# Exceção: dados simulados (pequenos, públicos) podem ser versionados
+!data/raw/simulated_*.csv
+!data/raw/.gitkeep
+
+# ── IDE e editores ────────────────────────────────────
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ── Sistema operacional ───────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Logs e temporários ────────────────────────────────
+*.log
+*.tmp
+*.swp
+*.bak
+~$*
+
+# ── Node (se necessário no futuro) ────────────────────
+node_modules/
+package-lock.json
