@@ -1,0 +1,193 @@
+---
+title: "Regressão Linear em R"
+description: "Estimação de regressão linear, apresentação de resultados e interpretação econômica."
+---
+
+::: {.callout-note}
+**Nível:** Básico–Médio · **Pacotes:** base R, broom, ggplot2 · **Dados:** Simulados · **Pré-requisito:** [Estatística Descritiva](estatistica-descritiva.qmd)
+:::
+
+::: {.callout-warning}
+**Aviso didático:** os dados utilizados neste módulo são simulados para fins de aprendizagem. Os coeficientes estimados devem ser interpretados como exercício metodológico, não como evidência empírica.
+:::
+
+---
+
+## Conceito: o que é regressão linear?
+
+A regressão linear estima a relação entre uma variável dependente ($Y$) e uma ou mais variáveis explicativas ($X$), assumindo que a relação é aproximadamente linear:
+
+$$Y_i = \beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \varepsilon_i$$
+
+onde $\beta_0$ é o intercepto, $\beta_1, \beta_2$ são os coeficientes angulares e $\varepsilon_i$ é o termo de erro.
+
+---
+
+## 1. Preparando os dados
+
+```{r}
+#| label: dados-regressao
+#| echo: true
+#| eval: false
+
+set.seed(42)
+n <- 200
+
+dados <- data.frame(
+  escolaridade = sample(4:18, n, replace = TRUE),
+  experiencia  = sample(0:40, n, replace = TRUE),
+  sexo_fem     = sample(c(0, 1), n, replace = TRUE, prob = c(0.52, 0.48))
+)
+
+# Salário como função linear das variáveis + ruído
+dados$salario <- 800 +
+  250 * dados$escolaridade +
+  80  * dados$experiencia +
+  (-350) * dados$sexo_fem +
+  rnorm(n, sd = 600)
+
+dados$salario <- pmax(dados$salario, 1320)  # mínimo = salário mínimo aproximado
+
+head(dados)
+```
+
+---
+
+## 2. Estimando o modelo com `lm()`
+
+```{r}
+#| label: modelo-lm
+#| echo: true
+#| eval: false
+
+# Modelo simples: salário ~ escolaridade
+modelo_simples <- lm(salario ~ escolaridade, data = dados)
+
+# Resumo
+summary(modelo_simples)
+```
+
+```{r}
+#| label: modelo-multiplo
+#| echo: true
+#| eval: false
+
+# Modelo múltiplo: salário ~ escolaridade + experiência + sexo
+modelo_multiplo <- lm(
+  salario ~ escolaridade + experiencia + sexo_fem,
+  data = dados
+)
+
+summary(modelo_multiplo)
+```
+
+---
+
+## 3. Apresentando resultados com `broom`
+
+```{r}
+#| label: broom-tidy
+#| echo: true
+#| eval: false
+
+# broom::tidy() extrai os coeficientes como data frame
+resultados <- broom::tidy(modelo_multiplo, conf.int = TRUE)
+
+# Exibindo como tabela
+knitr::kable(
+  resultados[, c("term", "estimate", "std.error", "statistic", "p.value")],
+  digits      = 3,
+  col.names   = c("Variável", "Coef.", "Erro Padrão", "t", "p-valor"),
+  caption     = "Tabela 1. Resultados da regressão (dados simulados)"
+)
+```
+
+```{r}
+#| label: broom-glance
+#| echo: true
+#| eval: false
+
+# broom::glance() extrai estatísticas do modelo
+ajuste <- broom::glance(modelo_multiplo)
+
+cat("R² =", round(ajuste$r.squared, 3), "\n")
+cat("R² ajustado =", round(ajuste$adj.r.squared, 3), "\n")
+cat("F (p-valor) =", signif(ajuste$p.value, 3), "\n")
+cat("N =", ajuste$nobs, "\n")
+```
+
+---
+
+## 4. Visualizando coeficientes
+
+```{r}
+#| label: plot-coef
+#| echo: true
+#| eval: false
+#| fig-cap: "Coeficientes estimados com intervalos de confiança de 95%"
+
+resultados_plot <- broom::tidy(modelo_multiplo, conf.int = TRUE) |>
+  subset(term != "(Intercept)")
+
+ggplot2::ggplot(
+  resultados_plot,
+  ggplot2::aes(x = estimate, y = term, xmin = conf.low, xmax = conf.high)
+) +
+  ggplot2::geom_vline(xintercept = 0, linetype = "dashed", color = "gray50") +
+  ggplot2::geom_errorbarh(height = 0.2) +
+  ggplot2::geom_point(size = 3, color = "steelblue") +
+  ggplot2::labs(
+    title    = "Coeficientes estimados (IC 95%)",
+    subtitle = "Regressão: salário ~ escolaridade + experiência + sexo",
+    x        = "Coeficiente estimado (R$)",
+    y        = NULL,
+    caption  = "Dados simulados — apenas fins didáticos"
+  ) +
+  ggplot2::theme_minimal(base_size = 13)
+```
+
+---
+
+## 5. Diagnóstico do modelo
+
+```{r}
+#| label: diagnostico
+#| echo: true
+#| eval: false
+#| fig-cap: "Gráficos de diagnóstico do modelo de regressão"
+
+# Os 4 gráficos de diagnóstico padrão do R
+par(mfrow = c(2, 2))
+plot(modelo_multiplo)
+par(mfrow = c(1, 1))
+```
+
+---
+
+## 6. Interpretando os coeficientes
+
+Com base no modelo gerado pelos dados simulados, a interpretação seria:
+
+::: {.callout-tip}
+**Como interpretar coeficientes de regressão:**
+
+- **Intercepto ($\hat{\beta}_0$):** valor esperado do salário quando todas as variáveis explicativas são zero — geralmente sem interpretação substantiva.
+- **Escolaridade ($\hat{\beta}_1$):** cada ano adicional de escolaridade está associado a um aumento médio de aproximadamente R$ 250 no salário, *mantendo experiência e sexo constantes*.
+- **Experiência ($\hat{\beta}_2$):** cada ano adicional de experiência está associado a R$ 80 a mais, *ceteris paribus*.
+- **Sexo feminino ($\hat{\beta}_3 < 0$):** o coeficiente negativo indica que, nesta amostra simulada, mulheres recebem em média R$ 350 menos — diferença gerada artificialmente nos dados, mas que reflete o tipo de análise de discriminação salarial feita em pesquisas reais.
+- **$R^2$:** proporção da variância do salário explicada pelas variáveis do modelo.
+:::
+
+---
+
+## 7. Próximos passos
+
+Após dominar a regressão linear simples e múltipla:
+
+1. **Regressão com variáveis categóricas** — variáveis dummy e interpretação
+2. **Heterocedasticidade** — teste de Breusch-Pagan e erros robustos
+3. **Dados em painel** — pacote `plm`, efeitos fixos e aleatórios
+4. **Séries temporais** — autocorrelação, modelos ARIMA, sazonalidade
+5. **Avaliação de políticas** — diferenças em diferenças, variável instrumental
+
+[← Voltar ao Laboratório R](index.qmd)

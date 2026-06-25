@@ -1,0 +1,191 @@
+---
+title: "Tratamento e Análise de Dados com Python"
+description: "Criação de DataFrame, tratamento de valores ausentes, estatísticas descritivas e exportação."
+---
+
+::: {.callout-note}
+**Nível:** Iniciante · **Bibliotecas:** pandas, numpy · **Dados:** Simulados
+:::
+
+---
+
+## 1. Criando um DataFrame
+
+```{python}
+#| label: criacao-dataframe
+#| echo: true
+#| eval: true
+
+import pandas as pd
+import numpy as np
+
+# Reprodutibilidade
+np.random.seed(42)
+
+n = 80
+
+# Simulando um levantamento sobre processos judiciais fictícios
+df = pd.DataFrame({
+    "id_processo":   range(1, n + 1),
+    "vara":          np.random.choice(["1ª Civil", "2ª Civil", "Trabalhista", "Criminal"], n),
+    "duracao_dias":  np.random.randint(30, 1800, n),
+    "valor_causa":   np.random.uniform(1000, 500000, n).round(2),
+    "encerrado":     np.random.choice([True, False], n, p=[0.65, 0.35])
+})
+
+# Introduzindo valores ausentes artificialmente (como ocorre em bases reais)
+df.loc[np.random.choice(df.index, 8, replace=False), "valor_causa"] = np.nan
+df.loc[np.random.choice(df.index, 5, replace=False), "duracao_dias"] = np.nan
+
+print("Formato do DataFrame:", df.shape)
+print("\nPrimeiras linhas:")
+print(df.head(8))
+```
+
+---
+
+## 2. Identificando problemas na base
+
+```{python}
+#| label: identificar-problemas
+#| echo: true
+#| eval: true
+
+print("=== INFORMAÇÕES GERAIS ===")
+print(df.info())
+
+print("\n=== VALORES AUSENTES ===")
+ausentes = df.isnull().sum()
+pct_ausentes = (ausentes / len(df) * 100).round(1)
+resumo_ausentes = pd.DataFrame({
+    "Ausentes": ausentes,
+    "% do total": pct_ausentes
+}).query("Ausentes > 0")
+print(resumo_ausentes)
+
+print("\n=== DUPLICATAS ===")
+print(f"Linhas duplicadas: {df.duplicated().sum()}")
+```
+
+---
+
+## 3. Tratando valores ausentes
+
+```{python}
+#| label: tratar-ausentes
+#| echo: true
+#| eval: true
+
+df_limpo = df.copy()
+
+# Estratégia 1: imputar a mediana para variáveis numéricas
+# (Mediana é robusta a outliers — preferível à média em dados assimétricos)
+df_limpo["valor_causa"]   = df_limpo["valor_causa"].fillna(df_limpo["valor_causa"].median())
+df_limpo["duracao_dias"]  = df_limpo["duracao_dias"].fillna(df_limpo["duracao_dias"].median())
+
+# Verificando
+print("Valores ausentes após tratamento:")
+print(df_limpo.isnull().sum())
+```
+
+---
+
+## 4. Estatísticas descritivas
+
+```{python}
+#| label: descritivas
+#| echo: true
+#| eval: true
+
+print("=== ESTATÍSTICAS NUMÉRICAS ===")
+print(df_limpo[["duracao_dias", "valor_causa"]].describe().round(2))
+
+print("\n=== FREQUÊNCIA POR VARA ===")
+frequencia = df_limpo["vara"].value_counts()
+print(frequencia)
+print(f"\nTotal: {frequencia.sum()}")
+
+print("\n=== TAXA DE ENCERRAMENTO ===")
+taxa = df_limpo["encerrado"].value_counts(normalize=True).round(3) * 100
+print(taxa.rename({True: "Encerrado (%)", False: "Em andamento (%)"}))
+```
+
+---
+
+## 5. Estatísticas agrupadas
+
+```{python}
+#| label: agrupadas
+#| echo: true
+#| eval: true
+
+resumo_vara = (
+    df_limpo
+    .groupby("vara")
+    .agg(
+        n              = ("id_processo", "count"),
+        duracao_media  = ("duracao_dias", "mean"),
+        valor_mediano  = ("valor_causa", "median"),
+        pct_encerrado  = ("encerrado", "mean")
+    )
+    .round(2)
+    .reset_index()
+)
+
+resumo_vara["pct_encerrado"] = (resumo_vara["pct_encerrado"] * 100).round(1)
+
+print("Resumo por vara judicial (dados simulados):")
+print(resumo_vara.to_string(index=False))
+```
+
+---
+
+## 6. Exportando resultados
+
+```{python}
+#| label: exportacao
+#| echo: true
+#| eval: false  # evita criar arquivo durante renderização
+
+import os
+
+# Criando diretório de saída se não existir
+os.makedirs("data/processed", exist_ok=True)
+
+# CSV
+df_limpo.to_csv("data/processed/processos_limpos.csv", index=False, encoding="utf-8")
+
+# Excel (requer openpyxl: pip install openpyxl)
+# df_limpo.to_excel("data/processed/processos_limpos.xlsx", index=False)
+
+# Resumo em CSV
+resumo_vara.to_csv("data/processed/resumo_por_vara.csv", index=False, encoding="utf-8")
+
+print("Arquivos exportados com sucesso.")
+```
+
+---
+
+## 7. Interpretação
+
+::: {.callout-tip}
+**Pontos de atenção ao tratar dados:**
+
+1. **Valores ausentes:** entenda o *porquê* antes de imputar. Dados faltantes podem ser aleatórios (MAR) ou sistemáticos (MNAR). A imputação pela mediana é simples e robusta, mas não é sempre a melhor estratégia.
+
+2. **Outliers:** verifique os extremos com `describe()`. Um valor de causa de R$ 50 milhões num conjunto de pequenas causas pode ser legítimo ou um erro de digitação.
+
+3. **Reprodutibilidade:** sempre use `np.random.seed()` ou `random_state` para garantir que os resultados sejam reproduzíveis por outros pesquisadores.
+
+4. **Metadados:** documente o dicionário de variáveis. O que significa `encerrado = True`? Inclui desistência, acordo e sentença?
+:::
+
+::: {.callout-warning}
+Os dados deste exemplo são fictícios. Em projetos reais com dados judiciais, observe as normas de sigilo e as exigências da LGPD.
+:::
+
+---
+
+## Próximo módulo
+
+[→ Análise Financeira com Python](analise-financeira.qmd)

@@ -1,0 +1,190 @@
+---
+title: "Análise Financeira com Python"
+description: "Cálculo de indicadores de liquidez, rentabilidade e endividamento a partir de balanços patrimoniais."
+---
+
+::: {.callout-note}
+**Nível:** Básico–Médio · **Bibliotecas:** pandas, numpy · **Dados:** Simulados
+:::
+
+A análise financeira de empresas é uma competência fundamental para economistas, auditores e pesquisadores que avaliam regulação econômica, crédito, recuperação judicial ou desempenho setorial.
+
+---
+
+## 1. Conceitos-chave
+
+Os indicadores financeiros que calcularemos:
+
+| Indicador | Fórmula | O que mede |
+|-----------|---------|------------|
+| Liquidez Corrente | Ativo Circulante / Passivo Circulante | Capacidade de pagar dívidas de curto prazo |
+| Liquidez Seca | (AC − Estoques) / Passivo Circulante | Liquidez sem depender de estoques |
+| Margem Líquida | Lucro Líquido / Receita Líquida | % da receita que vira lucro |
+| ROE | Lucro Líquido / Patrimônio Líquido | Retorno sobre o capital dos sócios |
+| Endividamento Geral | Passivo Total / Ativo Total | Proporção financiada por terceiros |
+
+---
+
+## 2. Estrutura de dados
+
+```{python}
+#| label: dados-financeiros
+#| echo: true
+#| eval: true
+
+import pandas as pd
+import numpy as np
+
+# Balanços e DREs de 5 empresas fictícias
+# Valores em R$ milhões
+dados_financeiros = {
+    "empresa": ["Alfa S.A.", "Beta Ltda.", "Gama S.A.", "Delta Corp.", "Epsilon"],
+    "setor":   ["Comércio", "Indústria", "Serviços", "Comércio", "Indústria"],
+
+    # Balanço Patrimonial
+    "ativo_circulante":   [120, 80, 45, 200, 60],
+    "estoques":           [ 40, 35, 10,  80, 25],
+    "ativo_total":        [350, 220, 130, 500, 180],
+    "passivo_circulante": [ 90, 65, 30, 160, 55],
+    "passivo_total":      [180, 130, 70, 310, 110],
+    "patrim_liquido":     [170, 90, 60, 190, 70],
+
+    # DRE
+    "receita_liquida": [400, 250, 150, 600, 200],
+    "lucro_liquido":   [ 28, 12,  18, -15, 8]
+}
+
+df = pd.DataFrame(dados_financeiros)
+print("Dados financeiros carregados:")
+print(df[["empresa", "setor", "receita_liquida", "lucro_liquido"]].to_string(index=False))
+```
+
+---
+
+## 3. Calculando os indicadores
+
+```{python}
+#| label: calcular-indicadores
+#| echo: true
+#| eval: true
+
+df_ind = df.copy()
+
+# Liquidez
+df_ind["liq_corrente"] = (df_ind["ativo_circulante"] / df_ind["passivo_circulante"]).round(2)
+df_ind["liq_seca"]     = ((df_ind["ativo_circulante"] - df_ind["estoques"]) / df_ind["passivo_circulante"]).round(2)
+
+# Rentabilidade
+df_ind["margem_liq"] = (df_ind["lucro_liquido"] / df_ind["receita_liquida"] * 100).round(2)
+df_ind["roe"]        = (df_ind["lucro_liquido"] / df_ind["patrim_liquido"] * 100).round(2)
+
+# Endividamento
+df_ind["endividamento"] = (df_ind["passivo_total"] / df_ind["ativo_total"] * 100).round(2)
+
+# Resultado
+colunas = ["empresa", "setor", "liq_corrente", "liq_seca",
+           "margem_liq", "roe", "endividamento"]
+
+print("=== INDICADORES FINANCEIROS ===")
+print(df_ind[colunas].to_string(index=False))
+```
+
+---
+
+## 4. Análise comparativa
+
+```{python}
+#| label: analise-comparativa
+#| echo: true
+#| eval: true
+
+# Ranking por liquidez corrente
+print("=== RANKING: Liquidez Corrente ===")
+print(df_ind[["empresa", "liq_corrente"]]
+      .sort_values("liq_corrente", ascending=False)
+      .to_string(index=False))
+
+# Empresas com liquidez corrente < 1 (risco de insolvência de curto prazo)
+print("\n=== ALERTA: Liquidez Corrente < 1,0 ===")
+alerta = df_ind[df_ind["liq_corrente"] < 1.0][["empresa", "liq_corrente", "endividamento"]]
+if alerta.empty:
+    print("Nenhuma empresa com risco imediato de liquidez.")
+else:
+    print(alerta.to_string(index=False))
+
+# Empresas com prejuízo
+print("\n=== EMPRESAS COM PREJUÍZO ===")
+prejuizo = df_ind[df_ind["lucro_liquido"] < 0][["empresa", "margem_liq", "roe"]]
+if prejuizo.empty:
+    print("Nenhuma empresa com prejuízo.")
+else:
+    print(prejuizo.to_string(index=False))
+```
+
+---
+
+## 5. Tabela-resumo formatada
+
+```{python}
+#| label: tabela-formatada
+#| echo: true
+#| eval: true
+
+def formatar_indicador(valor, sufixo=""):
+    if pd.isna(valor):
+        return "N/D"
+    return f"{valor:.2f}{sufixo}"
+
+tabela = df_ind[["empresa", "setor"]].copy()
+tabela["Liq. Corrente"]  = df_ind["liq_corrente"].apply(lambda v: formatar_indicador(v, "x"))
+tabela["Liq. Seca"]      = df_ind["liq_seca"].apply(lambda v: formatar_indicador(v, "x"))
+tabela["Margem Líq."]    = df_ind["margem_liq"].apply(lambda v: formatar_indicador(v, "%"))
+tabela["ROE"]            = df_ind["roe"].apply(lambda v: formatar_indicador(v, "%"))
+tabela["Endividamento"]  = df_ind["endividamento"].apply(lambda v: formatar_indicador(v, "%"))
+
+print("Tabela de Indicadores (dados simulados):")
+print(tabela.to_string(index=False))
+```
+
+---
+
+## 6. Interpretação dos indicadores
+
+::: {.callout-tip}
+**Guia de interpretação:**
+
+**Liquidez Corrente:**
+- `> 2,0`: liquidez confortável
+- `1,0 – 2,0`: zona aceitável — depende do setor
+- `< 1,0`: alerta de insolvência de curto prazo
+
+**Margem Líquida:**
+- Alta variação por setor: varejo tem margens menores que serviços especializados
+- Valores negativos indicam prejuízo operacional
+
+**Endividamento Geral:**
+- `< 40%`: empresa predominantemente financiada pelo próprio capital
+- `> 70%`: dependência elevada de terceiros — risco financeiro maior
+- Setores de infraestrutura podem tolerar endividamento mais alto
+
+**ROE:**
+- Deve ser comparado ao custo de capital (WACC) e à taxa livre de risco (Selic)
+- ROE < Selic pode indicar destruição de valor para o acionista
+:::
+
+::: {.callout-warning}
+Indicadores financeiros devem ser analisados em contexto setorial e comparados à série histórica da empresa. Uma análise isolada pode levar a conclusões equivocadas.
+
+**Dados deste exemplo são ficticios.** Para análise real, utilize demonstrações financeiras auditadas da CVM, B3 ou balanços consolidados.
+:::
+
+---
+
+## Próximos passos
+
+- Calcular o **EBITDA** e a margem EBITDA
+- Analisar a **evolução temporal** dos indicadores
+- Comparar empresas do **mesmo setor** com dados públicos da CVM
+- Criar um **dashboard** interativo com os indicadores
+
+[← Voltar ao Laboratório Python](index.qmd)

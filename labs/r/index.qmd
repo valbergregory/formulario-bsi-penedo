@@ -1,0 +1,72 @@
+---
+title: "Laboratório R"
+description: "Exemplos didáticos comentados em R: estatística descritiva, visualização e regressão."
+---
+
+O R é a linguagem central para análise de dados, econometria e visualização neste laboratório. Aqui você encontrará exemplos executáveis comentados, progressivos e aplicados a problemas reais de Economia e Direito.
+
+## Módulos disponíveis
+
+- [Estatística Descritiva](estatistica-descritiva.qmd)
+- [Regressão Linear](regressao-linear.qmd)
+
+::: {.callout-note}
+Novos módulos serão adicionados progressivamente ao longo de 2026–2027: séries temporais, dados em painel, econometria espacial, e visualizações avançadas com `ggplot2`.
+:::
+
+---
+
+## Por que R?
+
+R foi desenvolvido especificamente para análise estatística e científica. Para pesquisadores de Economia e Direito, oferece vantagens claras:
+
+- **Ecossistema rico:** `tidyverse`, `ggplot2`, `econometrics`, `plm`, `stargazer`
+- **Reprodutibilidade:** integração nativa com R Markdown e Quarto
+- **Comunidade acadêmica:** amplamente usado em periódicos e relatórios de pesquisa
+- **Acesso a dados:** pacotes para IBGE (`sidrar`), IPEA (`ipeadatar`), Banco Mundial
+
+---
+
+## Pacotes utilizados neste laboratório
+
+```r
+# Principais pacotes (instale com install.packages())
+install.packages(c(
+  "tidyverse",   # manipulação e visualização
+  "ggplot2",     # gráficos
+  "dplyr",       # manipulação de dados
+  "broom",       # tidying de modelos
+  "knitr",       # tabelas e documentos
+  "scales"       # formatação de eixos
+))
+```
+
+---
+
+## Exemplo rápido: seu primeiro gráfico em R
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Dados simulados de salários por escolaridade
+dados <- data.frame(
+  escolaridade = c(8, 9, 11, 12, 15, 16, 18),
+  salario_medio = c(1400, 1600, 1900, 2100, 3200, 4500, 6800)
+)
+
+# Gráfico básico de dispersão
+plot(
+  dados$escolaridade,
+  dados$salario_medio,
+  xlab = "Anos de escolaridade",
+  ylab = "Salário médio (R$)",
+  main = "Relação entre escolaridade e salário",
+  pch = 19,
+  col = "steelblue"
+)
+```
+
+::: {.callout-warning}
+Os exemplos deste laboratório utilizam dados simulados com fins exclusivamente didáticos. Interprete os coeficientes como exercício de leitura, não como achados empíricos válidos.
+:::

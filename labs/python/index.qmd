@@ -1,0 +1,74 @@
+---
+title: "Laboratório Python"
+description: "Exemplos didáticos em Python: tratamento de dados, análise financeira e automação."
+---
+
+Python é a linguagem de propósito geral deste laboratório. Versátil, com ecossistema científico maduro, é ideal para análise de dados, criação de APIs, automação e processamento de linguagem natural.
+
+## Módulos disponíveis
+
+- [Tratamento e Análise de Dados](tratamento-dados.qmd)
+- [Análise Financeira](analise-financeira.qmd)
+
+::: {.callout-note}
+Novos módulos serão adicionados progressivamente: séries temporais, PLN, scraping de dados públicos, APIs REST com FastAPI.
+:::
+
+---
+
+## Por que Python neste laboratório?
+
+- **Versatilidade:** dados, APIs, automação, PLN, ML — tudo no mesmo ecossistema
+- **pandas:** manipulação de dados tão poderosa quanto R, com sintaxe própria
+- **matplotlib/seaborn:** visualizações de qualidade
+- **FastAPI:** criação de APIs REST modernas com documentação automática
+- **spaCy:** PLN aplicado a documentos jurídicos
+- **Comunidade:** maior ecossistema de bibliotecas científicas do mundo
+
+---
+
+## Ambiente recomendado
+
+```bash
+# Criando ambiente virtual
+python -m venv venv
+
+# Ativando (Linux/macOS)
+source venv/bin/activate
+
+# Ativando (Windows)
+venv\Scripts\activate
+
+# Instalando dependências
+pip install -r requirements.txt
+```
+
+---
+
+## Exemplo rápido: seu primeiro DataFrame
+
+```python
+import pandas as pd
+
+# Dados simples
+dados = {
+    "municipio": ["Penedo", "Arapiraca", "Maceió", "Palmeira dos Índios"],
+    "pop_2022":  [58000, 230000, 1025000, 72000],
+    "pib_pc":    [12000, 18500, 21000, 11200]
+}
+
+df = pd.DataFrame(dados)
+print(df)
+print("\nEstatísticas:")
+print(df[["pop_2022", "pib_pc"]].describe())
+```
+
+---
+
+## Pacotes utilizados
+
+```bash
+pip install pandas numpy matplotlib
+```
+
+Veja o arquivo completo em `requirements.txt` na raiz do projeto.
