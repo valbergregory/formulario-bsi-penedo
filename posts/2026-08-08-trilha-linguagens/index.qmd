@@ -1,0 +1,123 @@
+---
+title: "Minha trilha de aprendizagem em R, Python, SQL, C++ e Java"
+date: "2026-08-08"
+description: "Explico por que escolhi essas cinco linguagens, como pretendo estudá-las e o que cada uma representa na minha formação como pesquisador e desenvolvedor."
+categories: [trilha, linguagens, planejamento]
+author: "Valber Gregory"
+---
+
+**Resumo:** Apresento o raciocínio por trás da escolha de cinco linguagens — R, Python, SQL, C++ e Java — e explico como cada uma se encaixa nos problemas que pretendo resolver ao longo de 2026–2027.
+
+**Tempo estimado de leitura:** 7 minutos | **Categorias:** trilha, linguagens, planejamento
+
+---
+
+## Cinco linguagens em doze meses
+
+Quando digo que pretendo estudar R, Python, SQL, C++ e Java em doze meses, a primeira reação das pessoas costuma ser uma mistura de ceticismo e curiosidade. *Você vai realmente conseguir?* Talvez não. Mas o planejamento é uma ferramenta poderosa mesmo quando não é cumprido à risca.
+
+A pergunta mais importante não é "você vai conseguir?" mas sim: **por que essas cinco linguagens?**
+
+---
+
+## Por que não apenas uma?
+
+A tentação é escolher uma linguagem, dominá-la profundamente e parar aí. É o conselho mais comum em fóruns de programação.
+
+Mas meu problema não é um problema de programação. É um problema de pesquisa e de construção de sistemas aplicados à área pública. E esse problema tem facetas que uma única linguagem não cobre bem.
+
+Preciso de:
+- Uma linguagem para análise estatística e econometria → **R**
+- Uma linguagem versátil para tudo mais → **Python**
+- Uma linguagem para consultar dados em qualquer sistema → **SQL**
+- Uma linguagem para entender algoritmos de desempenho e métodos numéricos → **C++**
+- Uma linguagem para construir sistemas e entender a base tecnológica do Judiciário → **Java**
+
+Não é colecionismo de linguagens. É coerência com o escopo do trabalho.
+
+---
+
+## R: a linguagem do pesquisador quantitativo
+
+R foi desenvolvido especificamente para estatística e análise de dados. Para quem trabalha com econometria, é praticamente insubstituível no contexto acadêmico.
+
+O que me atraiu ao R não foi apenas a potência dos pacotes estatísticos, mas a **cultura de reprodutibilidade** que ele ajudou a construir: R Markdown, Quarto, `renv`, projetos organizados. É uma linguagem que incentiva boas práticas científicas de forma orgânica.
+
+Meu objetivo com R em 2026–2027: dominar o `tidyverse`, `ggplot2`, e pacotes de econometria como `plm`, `AER` e `fixest`. Produzir análises publicáveis em Quarto.
+
+---
+
+## Python: a linguagem de propósito geral
+
+Python é a cola que une tudo. Posso usar para:
+- Limpar e transformar dados com `pandas`
+- Criar APIs REST com `FastAPI`
+- Processar texto jurídico com `spaCy`
+- Automatizar tarefas repetitivas
+- Conectar ao banco de dados e gerar relatórios
+
+Se R é o laboratório, Python é a fábrica. É onde os projetos ganham forma de produto, não apenas de análise.
+
+---
+
+## SQL: a linguagem invisível dos dados
+
+Quase todo sistema de informação de relevância — judicial, fiscal, previdenciário, de saúde — armazena dados em bancos relacionais. SQL é a linguagem que permite consultar esses dados independentemente da interface.
+
+Aprender SQL é como aprender a ler a infraestrutura invisível que sustenta os sistemas públicos. Além disso, é pré-requisito para construir APIs de dados — um dos projetos previstos para 2027.
+
+---
+
+## C++: desempenho e fundamentos
+
+C++ não vai ser a minha linguagem principal de trabalho. Mas há razões sólidas para estudá-la:
+
+**Métodos numéricos:** implementar bisseção, integração numérica e otimização em C++ força uma compreensão profunda dos algoritmos, muito além do que `scipy.optimize` oferece.
+
+**Fundamentos:** entender ponteiros, gerenciamento de memória e compilação muda a forma como você lê código em qualquer linguagem. É um investimento de longo prazo no raciocínio computacional.
+
+**Financeiro e científico:** o backend de muitos pacotes R e Python é escrito em C++ (via Rcpp e Cython). Entender C++ me permite contribuir para esses pacotes, não apenas usá-los.
+
+---
+
+## Java: sistemas e o Judiciário
+
+O PJe — Processo Judicial Eletrônico — é o sistema de tramitação processual do Poder Judiciário federal e de muitos tribunais estaduais. Seu backend é Java. Entender Java é, literalmente, entender a linguagem em que o Judiciário brasileiro foi programado.
+
+Além disso, o paradigma orientado a objetos de Java é mais rigoroso do que em Python. Estudar Java significa entender encapsulamento, herança, interfaces e polimorfismo de forma mais disciplinada — e esse raciocínio se transfere para qualquer sistema de médio e grande porte.
+
+---
+
+## A ordem importa
+
+A sequência da trilha não é arbitrária:
+
+```
+R e Python (análise) → SQL (dados) → Java (sistemas) → C++ (algoritmos) → APIs e integração
+```
+
+Começo com o que já conheço parcialmente (R e Python), consolidado os fundamentos. Avanço para SQL, porque qualquer sistema sério precisa de banco de dados. Depois Java, que me dá o paradigma orientado a objetos. Depois C++, que me dá o raciocínio algorítmico mais próximo da máquina. No final, junto tudo em projetos de sistemas integrados.
+
+---
+
+## O que "aprender" significa aqui?
+
+Não é acumular tutoriais. É produzir algo funcional e documentado em cada linguagem.
+
+Para R e Python: exemplos reproduzíveis publicados neste laboratório.
+Para SQL: um repositório de consultas sobre dados públicos.
+Para Java: a calculadora de prazos processuais.
+Para C++: implementações de métodos numéricos testados.
+
+A linguagem está aprendida quando o projeto está publicado, funcionando e documentado.
+
+---
+
+## Próximos passos
+
+- Publicar os primeiros laboratórios R e Python (em andamento)
+- Iniciar o módulo SQL com exemplos de bases públicas
+- Documentar a próxima postagem: reprodutibilidade científica no GitHub
+
+[→ Ver a trilha completa](../../trilha.qmd)
+[→ Ver os laboratórios](../../labs/r/index.qmd)
