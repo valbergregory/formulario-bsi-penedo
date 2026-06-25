@@ -1,0 +1,192 @@
+/* ============================================================
+   Laboratório de Direito, Economia e Tecnologia
+   styles.css — ajustes sobre o tema Cosmo/Darkly do Quarto
+   ============================================================ */
+
+/* Tipografia */
+body {
+  font-family: "Lato", "Helvetica Neue", sans-serif;
+  line-height: 1.75;
+  font-size: 1.0rem;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.2rem; }
+
+/* Largura confortável para leitura */
+.content-body {
+  max-width: 860px;
+}
+
+/* Navbar */
+.navbar-brand {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* Cards de projeto */
+.card-projeto {
+  border: 1px solid var(--bs-border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+  transition: box-shadow 0.2s ease;
+}
+
+.card-projeto:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.10);
+}
+
+.card-projeto .projeto-titulo {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.card-projeto .projeto-desc {
+  font-size: 0.93rem;
+  color: var(--bs-secondary-color);
+  margin-bottom: 0.75rem;
+}
+
+/* Badges de status */
+.badge-planejado  { background-color: #6c757d; color: #fff; }
+.badge-em-dev     { background-color: #0d6efd; color: #fff; }
+.badge-concluido  { background-color: #198754; color: #fff; }
+.badge-iniciado   { background-color: #fd7e14; color: #fff; }
+
+.badge-status {
+  display: inline-block;
+  padding: 0.2em 0.65em;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-right: 0.4rem;
+}
+
+/* Tags de tecnologia */
+.tag-tech {
+  display: inline-block;
+  background: var(--bs-light);
+  color: var(--bs-body-color);
+  border: 1px solid var(--bs-border-color);
+  border-radius: 4px;
+  font-size: 0.78rem;
+  padding: 0.1em 0.5em;
+  margin: 0.1rem 0.2rem 0.1rem 0;
+  font-family: monospace;
+}
+
+/* Grid de cards */
+.grid-projetos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+/* Trilha de aprendizagem */
+.trilha-item {
+  border-left: 3px solid var(--bs-primary);
+  padding-left: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.trilha-item.concluido { border-color: #198754; }
+.trilha-item.em-dev    { border-color: #0d6efd; }
+.trilha-item.planejado { border-color: #6c757d; }
+.trilha-item.iniciado  { border-color: #fd7e14; }
+
+/* Blocos de código */
+pre {
+  border-radius: 6px;
+  font-size: 0.88rem;
+  padding: 1rem;
+}
+
+code {
+  font-size: 0.9em;
+}
+
+/* Alertas e callouts */
+.callout {
+  border-radius: 6px;
+  margin-bottom: 1.25rem;
+}
+
+/* Tabelas */
+table {
+  font-size: 0.92rem;
+  width: 100%;
+  overflow-x: auto;
+  display: block;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Rodapé */
+.nav-footer {
+  font-size: 0.85rem;
+  opacity: 0.85;
+  border-top: 1px solid var(--bs-border-color);
+  padding-top: 1rem;
+  margin-top: 2rem;
+}
+
+/* Seção hero da página inicial */
+.hero-section {
+  padding: 3rem 0 2rem 0;
+  border-bottom: 1px solid var(--bs-border-color);
+  margin-bottom: 2rem;
+}
+
+.hero-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+
+.hero-subtitle {
+  font-size: 1.15rem;
+  max-width: 720px;
+}
+
+/* Linha divisória de seção */
+.section-divider {
+  border: none;
+  border-top: 2px solid var(--bs-border-color);
+  margin: 2rem 0;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .hero-title { font-size: 1.7rem; }
+  .grid-projetos { grid-template-columns: 1fr; }
+  table { font-size: 0.82rem; }
+}
+
+/* Modo escuro — pequenos ajustes */
+[data-bs-theme="dark"] .tag-tech {
+  background: #2c2f34;
+  border-color: #444;
+}
+
+[data-bs-theme="dark"] .card-projeto {
+  background: #1e2124;
+}
