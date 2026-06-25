@@ -1,0 +1,187 @@
+---
+title: "Laboratório SQL"
+description: "SQL para pesquisadores: modelagem, consultas e análise de dados públicos."
+---
+
+SQL (Structured Query Language) é a linguagem padrão para consulta e manipulação de bancos de dados relacionais. Para pesquisadores de Economia e Direito, SQL é essencial para extrair, filtrar e agregar grandes volumes de dados públicos.
+
+---
+
+## Por que SQL está nesta trilha?
+
+- Praticamente todos os sistemas de informação pública usam bancos de dados relacionais
+- Portais como dados.gov.br, IPEA Data e CNJ disponibilizam dados em formato SQL ou compatível
+- SQL é pré-requisito para APIs de dados, dashboards e análises escaláveis
+- Combinado com Python e R, multiplica a capacidade analítica
+
+---
+
+## Objetivos de aprendizagem
+
+Ao concluir o módulo SQL, você será capaz de:
+
+1. Criar e estruturar tabelas relacionais
+2. Inserir, atualizar e consultar dados
+3. Usar filtros, agrupamentos e funções de agregação
+4. Combinar tabelas com `JOIN`
+5. Usar subconsultas e CTEs para análises complexas
+6. Aplicar SQL a bases de dados públicas jurídicas e econômicas
+
+---
+
+## Conceitos que serão estudados
+
+| Categoria | Comandos |
+|-----------|---------|
+| DDL (estrutura) | `CREATE TABLE`, `ALTER TABLE`, `DROP`, `PRIMARY KEY`, `FOREIGN KEY` |
+| DML (dados) | `INSERT`, `UPDATE`, `DELETE`, `SELECT` |
+| Filtros | `WHERE`, `AND`, `OR`, `NOT`, `IN`, `BETWEEN`, `LIKE` |
+| Agrupamentos | `GROUP BY`, `HAVING`, `ORDER BY` |
+| Funções | `COUNT()`, `SUM()`, `AVG()`, `MAX()`, `MIN()`, `ROUND()` |
+| Junções | `INNER JOIN`, `LEFT JOIN`, `RIGHT JOIN`, `FULL JOIN` |
+| Avançado | `CTE` (WITH), subconsultas, `WINDOW FUNCTIONS` |
+
+---
+
+## Primeiro exemplo: criando um banco de dados judicial
+
+```sql
+-- 1. Criando a tabela de varas judiciais
+CREATE TABLE varas (
+    id_vara      INTEGER PRIMARY KEY,
+    nome_vara    TEXT NOT NULL,
+    competencia  TEXT NOT NULL,  -- 'civil', 'criminal', 'trabalhista'
+    comarca      TEXT NOT NULL
+);
+
+-- 2. Criando a tabela de processos
+CREATE TABLE processos (
+    id_processo     TEXT PRIMARY KEY,   -- ex: "0001234-12.2024.8.02.0001"
+    id_vara         INTEGER NOT NULL REFERENCES varas(id_vara),
+    data_entrada    DATE NOT NULL,
+    data_sentenca   DATE,               -- NULL se ainda não julgado
+    tipo_acao       TEXT NOT NULL,
+    valor_causa     NUMERIC(15, 2),
+    situacao        TEXT NOT NULL DEFAULT 'em_tramitacao',
+    CONSTRAINT chk_situacao CHECK (situacao IN ('em_tramitacao', 'encerrado', 'suspenso'))
+);
+
+-- 3. Criando a tabela de partes
+CREATE TABLE partes (
+    id_parte    SERIAL PRIMARY KEY,
+    id_processo TEXT NOT NULL REFERENCES processos(id_processo),
+    polo        TEXT NOT NULL,  -- 'ativo' ou 'passivo'
+    tipo_parte  TEXT NOT NULL   -- 'pf' ou 'pj'
+);
+```
+
+---
+
+## Inserindo dados
+
+```sql
+-- Inserindo varas
+INSERT INTO varas VALUES
+    (1, '1ª Vara Cível',      'civil',       'Penedo'),
+    (2, '2ª Vara Cível',      'civil',       'Penedo'),
+    (3, 'Vara Criminal',      'criminal',    'Penedo'),
+    (4, 'Vara do Trabalho',   'trabalhista', 'Penedo');
+
+-- Inserindo processos fictícios
+INSERT INTO processos (id_processo, id_vara, data_entrada, tipo_acao, valor_causa, situacao)
+VALUES
+    ('0000001-11.2024.8.02.0001', 1, '2024-03-15', 'Cobrança',         15000.00, 'encerrado'),
+    ('0000002-22.2024.8.02.0001', 1, '2024-04-10', 'Danos Morais',     25000.00, 'em_tramitacao'),
+    ('0000003-33.2024.8.02.0001', 2, '2024-05-01', 'Despejo',           8000.00, 'em_tramitacao'),
+    ('0000004-44.2024.8.02.0001', 3, '2024-06-20', 'Furto',            NULL,     'em_tramitacao'),
+    ('0000005-55.2024.8.02.0001', 4, '2024-07-01', 'Reclamação Trab.', 45000.00, 'encerrado');
+```
+
+---
+
+## Consultas fundamentais
+
+### SELECT com WHERE
+
+```sql
+-- Processos em tramitação com valor acima de R$ 10 mil
+SELECT id_processo, tipo_acao, valor_causa, data_entrada
+FROM processos
+WHERE situacao = 'em_tramitacao'
+  AND valor_causa > 10000
+ORDER BY valor_causa DESC;
+```
+
+### GROUP BY e funções de agregação
+
+```sql
+-- Processos por vara: contagem, valor médio e total
+SELECT
+    v.nome_vara,
+    v.competencia,
+    COUNT(p.id_processo)       AS total_processos,
+    ROUND(AVG(p.valor_causa), 2) AS valor_medio,
+    SUM(p.valor_causa)         AS valor_total
+FROM varas v
+LEFT JOIN processos p ON v.id_vara = p.id_vara
+GROUP BY v.id_vara, v.nome_vara, v.competencia
+ORDER BY total_processos DESC;
+```
+
+### JOIN entre tabelas
+
+```sql
+-- Processos com nome da vara e situação
+SELECT
+    p.id_processo,
+    v.nome_vara,
+    p.tipo_acao,
+    p.valor_causa,
+    p.situacao,
+    p.data_entrada
+FROM processos p
+INNER JOIN varas v ON p.id_vara = v.id_vara
+WHERE p.situacao = 'encerrado'
+ORDER BY p.data_entrada;
+```
+
+### HAVING — filtrando agrupamentos
+
+```sql
+-- Varas com mais de 1 processo em tramitação
+SELECT
+    v.nome_vara,
+    COUNT(*) AS em_tramitacao
+FROM processos p
+JOIN varas v ON p.id_vara = v.id_vara
+WHERE p.situacao = 'em_tramitacao'
+GROUP BY v.nome_vara
+HAVING COUNT(*) > 1;
+```
+
+---
+
+## Projetos futuros relacionados
+
+- **SQL para Pesquisadores** (setembro 2026): guia completo com 20+ consultas sobre dados públicos
+- **API de Indicadores** (maio 2027): backend com banco de dados relacional
+- **Fiscal de Qualidade de Dados** (novembro 2026): validações SQL automáticas
+
+---
+
+## Evolução prevista
+
+```
+Fundamentos SQL  →  Consultas analíticas  →
+SQL + Python/R  →  Modelagem de dados públicos  →
+APIs com banco de dados  →  Data Warehouse básico
+```
+
+---
+
+## Ferramentas recomendadas
+
+- **SQLite** — banco de dados local, sem instalação de servidor (ideal para aprender)
+- **PostgreSQL** — sistema completo, usado em sistemas reais
+- **DuckDB** — análise de dados em SQL sem servidor, integrado com Python e R
+- **DB Browser for SQLite** — interface gráfica gratuita

@@ -1,0 +1,205 @@
+---
+title: "Estatística Descritiva em R"
+description: "Criação de conjuntos de dados, estatísticas descritivas, tabelas e gráficos básicos."
+---
+
+::: {.callout-note}
+**Nível:** Iniciante · **Pacotes:** base R, dplyr, ggplot2, knitr · **Dados:** Simulados
+:::
+
+---
+
+## 1. Criando um conjunto de dados
+
+Vamos simular um conjunto de dados que poderia representar uma pesquisa sobre salários e escolaridade de trabalhadores em um município.
+
+```{r}
+#| label: criacao-dados
+#| echo: true
+#| eval: false
+
+# Reprodutibilidade
+set.seed(42)
+
+# Número de observações
+n <- 150
+
+# Criando o data frame
+dados <- data.frame(
+  id            = 1:n,
+  escolaridade  = sample(4:18, n, replace = TRUE),
+  idade         = sample(18:65, n, replace = TRUE),
+  sexo          = sample(c("M", "F"), n, replace = TRUE, prob = c(0.52, 0.48)),
+  setor         = sample(
+    c("Público", "Privado", "Informal"),
+    n, replace = TRUE, prob = c(0.25, 0.50, 0.25)
+  ),
+  salario       = round(
+    1200 + 200 * sample(4:18, n, replace = TRUE) +
+      rnorm(n, mean = 0, sd = 500), 2
+  )
+)
+
+# Verificando as primeiras linhas
+head(dados, 8)
+```
+
+---
+
+## 2. Estatísticas descritivas
+
+```{r}
+#| label: descritivas
+#| echo: true
+#| eval: false
+
+# Resumo geral
+summary(dados[, c("escolaridade", "idade", "salario")])
+
+# Estatísticas manuais para salário
+cat("=== SALÁRIO ===\n")
+cat("Média:     R$", round(mean(dados$salario), 2), "\n")
+cat("Mediana:   R$", round(median(dados$salario), 2), "\n")
+cat("Desvio P.: R$", round(sd(dados$salario), 2), "\n")
+cat("Mínimo:    R$", round(min(dados$salario), 2), "\n")
+cat("Máximo:    R$", round(max(dados$salario), 2), "\n")
+
+# Distribuição por setor
+table(dados$setor)
+prop.table(table(dados$setor))
+```
+
+---
+
+## 3. Tabela-resumo com dplyr
+
+```{r}
+#| label: tabela-dplyr
+#| echo: true
+#| eval: false
+
+# Certifique-se de que o dplyr está carregado
+# library(dplyr)  # descomente se necessário
+
+# Salário médio por setor e sexo
+tabela_resumo <- dados |>
+  dplyr::group_by(setor, sexo) |>
+  dplyr::summarise(
+    n           = dplyr::n(),
+    salario_med = round(mean(salario), 2),
+    salario_sd  = round(sd(salario), 2),
+    esc_media   = round(mean(escolaridade), 1),
+    .groups     = "drop"
+  ) |>
+  dplyr::arrange(setor, sexo)
+
+# Visualizando como tabela
+knitr::kable(
+  tabela_resumo,
+  col.names = c("Setor", "Sexo", "N", "Salário Médio (R$)",
+                "Desvio Padrão (R$)", "Escol. Média (anos)"),
+  caption   = "Tabela 1. Estatísticas descritivas por setor e sexo (dados simulados)"
+)
+```
+
+---
+
+## 4. Visualizações básicas com ggplot2
+
+### 4.1 Histograma da distribuição salarial
+
+```{r}
+#| label: histograma
+#| echo: true
+#| eval: false
+#| fig-cap: "Distribuição dos salários na amostra simulada"
+
+# library(ggplot2)  # descomente se necessário
+
+ggplot2::ggplot(dados, ggplot2::aes(x = salario)) +
+  ggplot2::geom_histogram(bins = 20, fill = "steelblue", color = "white", alpha = 0.8) +
+  ggplot2::labs(
+    title    = "Distribuição dos Salários",
+    subtitle = "Amostra simulada (n = 150)",
+    x        = "Salário (R$)",
+    y        = "Frequência",
+    caption  = "Dados simulados com fins didáticos"
+  ) +
+  ggplot2::theme_minimal(base_size = 13)
+```
+
+### 4.2 Boxplot por setor
+
+```{r}
+#| label: boxplot-setor
+#| echo: true
+#| eval: false
+#| fig-cap: "Distribuição salarial por setor (dados simulados)"
+
+ggplot2::ggplot(dados, ggplot2::aes(x = setor, y = salario, fill = setor)) +
+  ggplot2::geom_boxplot(alpha = 0.75, outlier.shape = 19) +
+  ggplot2::labs(
+    title   = "Distribuição Salarial por Setor",
+    x       = "Setor",
+    y       = "Salário (R$)",
+    caption = "Dados simulados com fins didáticos"
+  ) +
+  ggplot2::theme_minimal(base_size = 13) +
+  ggplot2::theme(legend.position = "none")
+```
+
+### 4.3 Dispersão: escolaridade × salário
+
+```{r}
+#| label: dispersao
+#| echo: true
+#| eval: false
+#| fig-cap: "Relação entre escolaridade e salário"
+
+ggplot2::ggplot(dados, ggplot2::aes(x = escolaridade, y = salario, color = setor)) +
+  ggplot2::geom_point(alpha = 0.6, size = 2) +
+  ggplot2::geom_smooth(
+    method  = "lm",
+    se      = FALSE,
+    color   = "black",
+    linetype = "dashed",
+    linewidth = 0.8
+  ) +
+  ggplot2::labs(
+    title    = "Escolaridade e Salário",
+    subtitle = "Cada ponto é um trabalhador na amostra",
+    x        = "Anos de escolaridade",
+    y        = "Salário (R$)",
+    color    = "Setor",
+    caption  = "Dados simulados com fins didáticos"
+  ) +
+  ggplot2::theme_minimal(base_size = 13)
+```
+
+---
+
+## 5. Interpretação dos resultados
+
+::: {.callout-tip}
+**Como interpretar estatísticas descritivas:**
+
+- **Média vs. mediana:** se a média é muito maior que a mediana, a distribuição é assimétrica à direita (salários de poucos puxam para cima).
+- **Desvio padrão:** quanto maior, mais dispersos são os salários — maior desigualdade na amostra.
+- **Boxplot:** a caixa representa o intervalo interquartílico (IQR = P75 − P25). Pontos além dos whiskers são potenciais outliers.
+- **Linha de tendência no gráfico de dispersão:** indica a direção e a força da relação entre as variáveis.
+:::
+
+::: {.callout-warning}
+**Lembrete:** estes dados são totalmente simulados. A relação observada entre escolaridade e salário é esperada na geração dos dados, não um achado empírico. Para análises reais, utilize bases como PNAD, RAIS ou Censo.
+:::
+
+---
+
+## 6. Próximos passos
+
+Nos módulos seguintes, você aprenderá a:
+
+1. Estimar um modelo de regressão linear com esses mesmos dados → [Regressão Linear](regressao-linear.qmd)
+2. Utilizar bases de dados reais do IBGE e IPEA
+3. Criar visualizações mais elaboradas com `ggplot2`
+4. Exportar resultados para documentos acadêmicos com `knitr` e Quarto

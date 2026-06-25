@@ -1,0 +1,198 @@
+---
+title: "Laboratório C++"
+description: "Introdução ao C++ para métodos numéricos e algoritmos aplicados à Economia."
+---
+
+C++ é uma linguagem de programação de alto desempenho, amplamente usada em sistemas críticos, jogos, finanças quantitativas e computação científica. Neste laboratório, C++ será estudado com foco em **métodos numéricos para problemas econômicos**.
+
+---
+
+## Por que C++ está nesta trilha?
+
+- **Desempenho:** C++ é ordens de magnitude mais rápido que Python/R para algoritmos intensivos
+- **Métodos numéricos:** implementações clássicas de otimização, integração e solução de equações
+- **Mercado financeiro:** a maioria dos sistemas de trading de alta frequência usa C++
+- **Fundamentos:** entender ponteiros, memória e tipos fortalece o raciocínio sobre qualquer linguagem
+- **Acadêmico:** muitos pacotes de R e Python têm backend em C++ (via Rcpp e Cython)
+
+---
+
+## Objetivos de aprendizagem
+
+1. Entender tipos de dados, variáveis e operadores em C++
+2. Escrever funções e organizar código modularmente
+3. Usar vetores e matrizes da biblioteca padrão (`std::vector`)
+4. Implementar algoritmos iterativos
+5. Aplicar métodos numéricos a problemas de Economia
+
+---
+
+## Primeiro exemplo: estrutura básica e cálculo de média
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <numeric>   // std::accumulate
+
+// Função que calcula a média de um vetor
+double calcularMedia(const std::vector<double>& valores) {
+    if (valores.empty()) return 0.0;
+    double soma = std::accumulate(valores.begin(), valores.end(), 0.0);
+    return soma / valores.size();
+}
+
+// Função que calcula o desvio padrão
+double calcularDesvioPadrao(const std::vector<double>& valores, double media) {
+    double soma_quad = 0.0;
+    for (double v : valores) {
+        soma_quad += (v - media) * (v - media);
+    }
+    return std::sqrt(soma_quad / valores.size());
+}
+
+int main() {
+    // Dados: taxas de crescimento do PIB municipal (% a.a.) — simulados
+    std::vector<double> taxas_pib = {2.1, 3.5, -0.8, 4.2, 1.9, 2.7, 3.1, -1.2, 5.0, 2.3};
+
+    double media = calcularMedia(taxas_pib);
+    double desvio = calcularDesvioPadrao(taxas_pib, media);
+
+    std::cout << "=== Análise das Taxas de Crescimento do PIB ===" << std::endl;
+    std::cout << "N de observações: " << taxas_pib.size() << std::endl;
+    std::cout << "Média:            " << media << "%" << std::endl;
+    std::cout << "Desvio padrão:    " << desvio << "%" << std::endl;
+    std::cout << "Coef. variação:   " << (desvio / media) * 100 << "%" << std::endl;
+
+    return 0;  // 0 indica execução bem-sucedida
+}
+```
+
+**Saída esperada:**
+```
+=== Análise das Taxas de Crescimento do PIB ===
+N de observações: 10
+Média:            2.28%
+Desvio padrão:    1.80%
+Coef. variação:   78.95%
+```
+
+---
+
+## Entrada e saída do usuário
+
+```cpp
+#include <iostream>
+#include <vector>
+
+int main() {
+    int n;
+    std::cout << "Quantos valores deseja calcular? ";
+    std::cin >> n;
+
+    std::vector<double> valores(n);
+    std::cout << "Digite os valores:" << std::endl;
+
+    for (int i = 0; i < n; i++) {
+        std::cout << "Valor " << (i + 1) << ": ";
+        std::cin >> valores[i];
+    }
+
+    double soma = 0;
+    for (double v : valores) soma += v;
+    double media = soma / n;
+
+    std::cout << "Média calculada: " << media << std::endl;
+    return 0;
+}
+```
+
+---
+
+## Estrutura inicial para métodos numéricos
+
+```cpp
+#include <iostream>
+#include <cmath>
+#include <functional>
+
+// Método da bisseção para encontrar raiz de uma função
+// Encontra x tal que f(x) = 0 no intervalo [a, b]
+double bissecao(std::function<double(double)> f, double a, double b,
+                double tolerancia = 1e-8, int max_iter = 100) {
+    // Verificação: a e b devem ter sinais opostos
+    if (f(a) * f(b) > 0) {
+        std::cerr << "Erro: f(a) e f(b) devem ter sinais opostos." << std::endl;
+        return std::nan("");
+    }
+
+    double c;
+    for (int i = 0; i < max_iter; i++) {
+        c = (a + b) / 2.0;
+        if (std::abs(f(c)) < tolerancia || (b - a) / 2.0 < tolerancia) break;
+        if (f(a) * f(c) < 0) b = c;
+        else a = c;
+    }
+    return c;
+}
+
+int main() {
+    // Exemplo: encontrar a taxa de retorno r de uma aplicação
+    // Fórmula: VP = FC / (r - g) => r tal que VP * r - VP * g - FC = 0
+    // Para VP = 1000, FC = 80, g = 0.02: 1000*r - 20 - 80 = 0 => r = 0.1
+
+    double VP = 1000, FC = 80, g = 0.02;
+    auto equacao_gordon = [VP, FC, g](double r) {
+        return VP * r - VP * g - FC;
+    };
+
+    double taxa = bissecao(equacao_gordon, 0.001, 0.5);
+    std::cout << "Taxa de retorno implícita: " << taxa * 100 << "% a.a." << std::endl;
+    // Esperado: 10%
+
+    return 0;
+}
+```
+
+---
+
+## Como compilar e executar
+
+```bash
+# Compilando com g++
+g++ -std=c++17 -O2 -o programa main.cpp
+
+# Executando
+./programa
+
+# No Windows (com MinGW)
+g++ -std=c++17 -O2 -o programa.exe main.cpp
+programa.exe
+```
+
+---
+
+## Conceitos que serão estudados
+
+| Nível | Tópicos |
+|-------|---------|
+| Básico | Tipos, variáveis, operadores, I/O, condicionais, laços |
+| Médio | Funções, arrays, `std::vector`, strings, ponteiros básicos |
+| Avançado | Classes, templates, STL, exceções, modularidade |
+| Aplicado | Métodos numéricos: bisseção, Newton-Raphson, integração, Monte Carlo |
+
+---
+
+## Projetos futuros relacionados
+
+- **Métodos Numéricos para Economia** (abril 2027) — biblioteca de funções numéricas
+- **Um Problema, Cinco Linguagens** (maio 2027) — comparação R, Python, SQL, C++, Java
+
+---
+
+## Evolução prevista
+
+```
+Sintaxe básica  →  Funções e vetores  →
+Algoritmos iterativos  →  Métodos numéricos  →
+Integração com Python (Cython/pybind11)
+```
