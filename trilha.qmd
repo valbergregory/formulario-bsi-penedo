@@ -1,0 +1,311 @@
+---
+title: "Trilha de Aprendizagem 2026–2027"
+description: "Planejamento mensal da evolução técnica e científica do laboratório."
+---
+
+Esta página documenta o planejamento da minha trilha de aprendizagem entre **agosto de 2026 e julho de 2027**. A progressão é deliberada: cada etapa consolida o anterior e abre caminho para o seguinte.
+
+## Progressão esperada
+
+```
+Análise de Dados  →  Econometria  →  SQL e Modelagem  →
+Aplicativos  →  APIs  →  Algoritmos  →  Sistemas Integrados
+```
+
+## Legenda de situação
+
+```{=html}
+<div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.5rem;">
+  <span class="badge-status badge-planejado">⬜ Planejado</span>
+  <span class="badge-status badge-iniciado">🔶 Iniciado</span>
+  <span class="badge-status badge-em-dev">🔵 Em desenvolvimento</span>
+  <span class="badge-status badge-concluido">✅ Concluído</span>
+  <span class="badge-status" style="background:#6f42c1; color:#fff;">🔄 Revisado</span>
+</div>
+```
+
+---
+
+## Agosto 2026
+
+::: {.trilha-item .em-dev}
+### Portfólio e Fundamentos de Dados
+
+<span class="badge-status badge-em-dev">Em desenvolvimento</span>
+
+**Projeto principal:** Laboratório de Direito, Economia e Tecnologia
+
+**Linguagens:** R · Python · Quarto
+
+**Competências:**
+- Estrutura de projetos Quarto
+- GitHub e GitHub Actions
+- Estatística descritiva com R e Python
+- Documentação técnica e reprodutibilidade
+
+**Resultado esperado:** Site publicado, laboratórios R e Python com exemplos funcionais, primeiras postagens no diário de evolução.
+
+**Indicador de progresso:** Site online em `valbergregory.github.io/valber-lab`
+:::
+
+---
+
+## Setembro 2026
+
+::: {.trilha-item .planejado}
+### SQL para Pesquisadores
+
+<span class="badge-status badge-planejado">Planejado</span>
+
+**Projeto principal:** SQL para Pesquisadores
+
+**Linguagem:** SQL · PostgreSQL · DuckDB
+
+**Competências:**
+- Modelagem de banco de dados relacional
+- DDL: `CREATE TABLE`, `ALTER`, `DROP`
+- DML: `SELECT`, `WHERE`, `GROUP BY`, `JOIN`, `HAVING`
+- Subconsultas e CTEs
+- SQL em pesquisa acadêmica e bases públicas
+
+**Resultado esperado:** Repositório público com 20+ consultas comentadas, incluindo análises de dados municipais e jurídicos.
+
+**Indicador de progresso:** Repositório `valber-lab-sql` publicado no GitHub
+:::
+
+---
+
+## Outubro 2026
+
+::: {.trilha-item .planejado}
+### Econometria Aplicada e Painel de Indicadores
+
+<span class="badge-status badge-planejado">Planejado</span>
+
+**Projetos:** Laboratório de Econometria Aplicada · Painel de Indicadores Econômicos Municipais
+
+**Linguagens:** R · Python
+
+**Competências:**
+- Regressão linear e múltipla (OLS)
+- Diagnóstico de modelos (resíduos, heterocedasticidade)
+- Dados em painel (efeitos fixos e aleatórios)
+- Visualizações com `ggplot2` e `matplotlib`
+- Dados IBGE, IPEA, STN
+
+**Resultado esperado:** Painel interativo com indicadores de Alagoas; tutoriais de econometria com dados reais.
+
+**Indicador de progresso:** Painel funcional com pelo menos 10 indicadores municipais
+:::
+
+---
+
+## Novembro 2026
+
+::: {.trilha-item .planejado}
+### Qualidade de Dados e Análise Avançada
+
+<span class="badge-status badge-planejado">Planejado</span>
+
+**Projeto:** Fiscal de Qualidade de Dados
+
+**Linguagem:** Python · SQL
+
+**Competências:**
+- Detecção de dados ausentes e inconsistentes
+- Validação de domínio e integridade referencial
+- Testes automatizados para bases de dados
+- Relatórios de qualidade
+
+**Resultado esperado:** Script Python para auditoria automática de bases de dados públicas, com relatório em HTML.
+
+**Indicador de progresso:** Ferramenta testa ao menos 3 bases públicas reais
+:::
+
+---
+
+## Dezembro 2026
+
+::: {.trilha-item .planejado}
+### Ferramentas Jurídicas e Análise Financeira
+
+<span class="badge-status badge-planejado">Planejado</span>
+
+**Projetos:** Analisador Financeiro · Anonimizador de Documentos Jurídicos
+
+**Linguagens:** Python · Java (introdução)
+
+**Competências:**
+- Indicadores financeiros (liquidez, endividamento, rentabilidade)
+- Processamento de linguagem natural (PLN) básico
+- LGPD e proteção de dados
+- Introdução ao paradigma orientado a objetos em Java
+
+**Resultado esperado:** Calculadora financeira funcional; protótipo de anonimizador de CPF e nomes.
+
+**Indicador de progresso:** Ferramentas testadas com dados simulados
+:::
+
+---
+
+## Janeiro 2027
+
+::: {.trilha-item .planejado}
+### Java: Paradigma Orientado a Objetos
+
+<span class="badge-status badge-planejado">Planejado</span>
+
+**Projeto:** Calculadora de Prazos Processuais
+
+**Linguagem:** Java
+
+**Competências:**
+- Classes, objetos, atributos e métodos
+- Herança e encapsulamento
+- Coleções (`ArrayList`, `HashMap`)
+- Datas em Java (`LocalDate`, `ChronoUnit`)
+- Calendário de feriados nacionais e estaduais
+
+**Resultado esperado:** Calculadora de prazos processuais civis com suporte a feriados de Alagoas.
+
+**Indicador de progresso:** Calculadora calcula prazos corretamente para 20 casos de teste
+:::
+
+---
+
+## Fevereiro 2027
+
+::: {.trilha-item .planejado}
+### Economia Regional: Observatório Pesqueiro
+
+<span class="badge-status badge-planejado">Planejado</span>
+
+**Projeto:** Observatório da Economia Pesqueira do São Francisco
+
+**Linguagens:** R · Python · SQL
+
+**Competências:**
+- Coleta e tratamento de dados ambientais e econômicos
+- Visualizações geoespaciais básicas
+- Integração de múltiplas fontes de dados
+- Relatórios reproduzíveis com Quarto
+
+**Resultado esperado:** Painel com dados sobre produção pesqueira, renda e emprego no Baixo São Francisco.
+
+**Indicador de progresso:** Painel publicado com dados de pelo menos 3 municípios ribeirinhos
+:::
+
+---
+
+## Março 2027
+
+::: {.trilha-item .planejado}
+### Estudos Reproduzíveis
+
+<span class="badge-status badge-planejado">Planejado</span>
+
+**Projeto:** Repositório de Estudos Reproduzíveis
+
+**Linguagens:** R · Python · Quarto
+
+**Competências:**
+- Estrutura de projetos reproduzíveis
+- Documentação de dados e metodologia
+- Integração de código, narrativa e resultados em Quarto
+- Boas práticas de versionamento científico
+
+**Resultado esperado:** 3 estudos de caso publicados com dados, código e análise integrados.
+
+**Indicador de progresso:** Cada estudo pode ser reproduzido por terceiros com um único comando
+:::
+
+---
+
+## Abril 2027
+
+::: {.trilha-item .planejado}
+### C++: Algoritmos e Métodos Numéricos
+
+<span class="badge-status badge-planejado">Planejado</span>
+
+**Projeto:** Métodos Numéricos para Economia
+
+**Linguagem:** C++
+
+**Competências:**
+- Tipos, ponteiros e estruturas em C++
+- Funções e modularidade
+- Vetores e matrizes
+- Métodos numéricos: bisseção, Newton-Raphson, integração numérica
+- Otimização univariada e multivariada
+
+**Resultado esperado:** Biblioteca de funções numéricas para problemas econômicos, com testes e documentação.
+
+**Indicador de progresso:** Implementação de 5 algoritmos numéricos com casos de teste passando
+:::
+
+---
+
+## Maio 2027
+
+::: {.trilha-item .planejado}
+### APIs e Multilinguagem
+
+<span class="badge-status badge-planejado">Planejado</span>
+
+**Projetos:** API de Indicadores · Um Problema, Cinco Linguagens
+
+**Linguagens:** Python · FastAPI · R · SQL · C++ · Java
+
+**Competências:**
+- Design e documentação de APIs REST
+- FastAPI e Pydantic
+- Comparação de paradigmas entre linguagens
+- Interoperabilidade de sistemas
+
+**Resultado esperado:** API funcional com 5 endpoints documentados; projeto multilinguagem publicado.
+
+**Indicador de progresso:** API responde corretamente a todas as requisições de teste
+:::
+
+---
+
+## Junho–Julho 2027
+
+::: {.trilha-item .planejado}
+### Sistemas Integrados e Revisão Final
+
+<span class="badge-status badge-planejado">Planejado</span>
+
+**Projetos:** Sistema de Gestão de Orientações · Distribuidor de Processos · Plataforma Municipal · Observatório DET
+
+**Linguagens:** Python · Java · SQL (sistemas integrados)
+
+**Competências:**
+- Arquitetura de sistemas de médio porte
+- Integração de banco de dados relacional com aplicação
+- Relatórios automatizados
+- Deploy e publicação
+
+**Resultado esperado:** Pelo menos 2 sistemas integrados funcionais; revisão e publicação final dos projetos anteriores.
+
+**Indicador de progresso:** Todos os projetos da trilha publicados ou em estado de revisão
+:::
+
+---
+
+## Resumo da trilha
+
+| Mês | Projeto Principal | Linguagem | Status |
+|-----|-------------------|-----------|--------|
+| Ago 2026 | Laboratório DET | R, Python, Quarto | Em desenvolvimento |
+| Set 2026 | SQL para Pesquisadores | SQL | Planejado |
+| Out 2026 | Econometria + Painel | R, Python | Planejado |
+| Nov 2026 | Fiscal de Dados | Python | Planejado |
+| Dez 2026 | Ferramentas Jurídicas | Python, Java | Planejado |
+| Jan 2027 | Calculadora de Prazos | Java | Planejado |
+| Fev 2027 | Observatório Pesqueiro | R, Python, SQL | Planejado |
+| Mar 2027 | Estudos Reproduzíveis | R, Python | Planejado |
+| Abr 2027 | Métodos Numéricos | C++ | Planejado |
+| Mai 2027 | APIs + Multilinguagem | Python, várias | Planejado |
+| Jun–Jul 2027 | Sistemas Integrados | Python, Java, SQL | Planejado |

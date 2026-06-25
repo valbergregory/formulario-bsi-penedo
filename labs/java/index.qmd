@@ -1,0 +1,236 @@
+---
+title: "Laboratório Java"
+description: "Introdução ao Java: orientação a objetos, sistemas e ferramentas jurídicas."
+---
+
+Java é uma das linguagens mais amplamente usadas no mundo. É a base de muitos sistemas de grande porte, incluindo sistemas judiciais como o PJe (Processo Judicial Eletrônico) e aplicações corporativas em geral.
+
+---
+
+## Por que Java está nesta trilha?
+
+- **Sistemas jurídicos:** o PJe e vários sistemas do Judiciário são escritos em Java
+- **Orientação a objetos:** Java ensina OOP de forma rigorosa, com encapsulamento, herança e polimorfismo
+- **Portabilidade:** "write once, run anywhere" — executa em qualquer sistema com JVM
+- **Mercado de trabalho:** segunda ou terceira linguagem mais usada em sistemas corporativos no Brasil
+- **APIs e microsserviços:** Spring Boot é o framework Java mais popular para APIs REST
+
+---
+
+## Objetivos de aprendizagem
+
+1. Compreender classes, objetos, atributos e métodos
+2. Implementar encapsulamento com getters e setters
+3. Usar herança para modelar hierarquias de entidades jurídicas
+4. Trabalhar com coleções (`ArrayList`, `HashMap`)
+5. Manipular datas com `LocalDate`
+6. Criar aplicações simples de linha de comando
+
+---
+
+## Estrutura básica: classe e objeto
+
+```java
+// Processo.java — representação de um processo judicial fictício
+public class Processo {
+
+    // Atributos (encapsulados)
+    private String numero;
+    private String tipoAcao;
+    private double valorCausa;
+    private boolean encerrado;
+
+    // Construtor
+    public Processo(String numero, String tipoAcao, double valorCausa) {
+        this.numero     = numero;
+        this.tipoAcao   = tipoAcao;
+        this.valorCausa = valorCausa;
+        this.encerrado  = false;
+    }
+
+    // Getters
+    public String getNumero()      { return numero; }
+    public String getTipoAcao()    { return tipoAcao; }
+    public double getValorCausa()  { return valorCausa; }
+    public boolean isEncerrado()   { return encerrado; }
+
+    // Setter com validação
+    public void encerrar() {
+        this.encerrado = true;
+    }
+
+    // toString — representação legível do objeto
+    @Override
+    public String toString() {
+        return String.format(
+            "Processo %s | %s | R$ %.2f | %s",
+            numero, tipoAcao, valorCausa,
+            encerrado ? "Encerrado" : "Em tramitação"
+        );
+    }
+}
+```
+
+---
+
+## Exemplo simples: cadastro acadêmico
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+// Aluno.java
+public class Aluno {
+    private String matricula;
+    private String nome;
+    private double coeficiente;
+
+    public Aluno(String matricula, String nome, double coeficiente) {
+        this.matricula   = matricula;
+        this.nome        = nome;
+        this.coeficiente = coeficiente;
+    }
+
+    public String getMatricula()     { return matricula; }
+    public String getNome()          { return nome; }
+    public double getCoeficiente()   { return coeficiente; }
+
+    public String getSituacao() {
+        if (coeficiente >= 7.0) return "Regular";
+        if (coeficiente >= 5.0) return "Observação";
+        return "Risco de desligamento";
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%-10s %-25s %.1f  [%s]",
+            matricula, nome, coeficiente, getSituacao());
+    }
+}
+
+// CadastroAcademico.java
+public class CadastroAcademico {
+    public static void main(String[] args) {
+        List<Aluno> turma = new ArrayList<>();
+
+        turma.add(new Aluno("2024001", "Ana Beatriz Lima",       8.5));
+        turma.add(new Aluno("2024002", "Carlos Eduardo Melo",    6.2));
+        turma.add(new Aluno("2024003", "Fernanda Costa Silva",   9.1));
+        turma.add(new Aluno("2024004", "João Pedro Alves",       4.8));
+        turma.add(new Aluno("2024005", "Marina Santos Reis",     7.3));
+
+        System.out.println("=== CADASTRO ACADÊMICO ===");
+        System.out.printf("%-10s %-25s %s  [Situação]%n", "Matrícula", "Nome", "CR");
+        System.out.println("-".repeat(65));
+
+        for (Aluno a : turma) {
+            System.out.println(a);
+        }
+
+        // Estatística simples
+        double media = turma.stream()
+            .mapToDouble(Aluno::getCoeficiente)
+            .average()
+            .orElse(0);
+
+        long em_risco = turma.stream()
+            .filter(a -> a.getCoeficiente() < 5.0)
+            .count();
+
+        System.out.println("-".repeat(65));
+        System.out.printf("CR médio da turma: %.2f%n", media);
+        System.out.printf("Alunos em risco: %d%n", em_risco);
+    }
+}
+```
+
+**Saída esperada:**
+```
+=== CADASTRO ACADÊMICO ===
+Matrícula  Nome                      CR  [Situação]
+-----------------------------------------------------------------
+2024001    Ana Beatriz Lima          8.5  [Regular]
+2024002    Carlos Eduardo Melo       6.2  [Observação]
+2024003    Fernanda Costa Silva      9.1  [Regular]
+2024004    João Pedro Alves          4.8  [Risco de desligamento]
+2024005    Marina Santos Reis        7.3  [Regular]
+-----------------------------------------------------------------
+CR médio da turma: 7.18
+Alunos em risco: 1
+```
+
+---
+
+## Calculadora de prazos: preview do projeto futuro
+
+```java
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+
+// Preview do projeto "Calculadora de Prazos Processuais"
+public class PrazoProcessual {
+
+    // Calcula prazo em dias corridos
+    public static long diasCorridos(LocalDate inicio, int prazo) {
+        return ChronoUnit.DAYS.between(inicio, inicio.plusDays(prazo));
+    }
+
+    // Retorna a data-limite
+    public static LocalDate dataLimite(LocalDate inicio, int prazo) {
+        return inicio.plusDays(prazo);
+    }
+
+    public static void main(String[] args) {
+        LocalDate citacao = LocalDate.of(2026, 8, 1);
+        int prazo_contestacao = 15;  // dias corridos — art. 335 CPC
+
+        LocalDate limite = dataLimite(citacao, prazo_contestacao);
+
+        System.out.println("Data da citação:   " + citacao);
+        System.out.println("Prazo para contestação: " + prazo_contestacao + " dias");
+        System.out.println("Data-limite:       " + limite);
+    }
+}
+```
+
+---
+
+## Como compilar e executar
+
+```bash
+# Compilando
+javac Processo.java
+javac CadastroAcademico.java
+
+# Executando
+java CadastroAcademico
+```
+
+---
+
+## Conceitos que serão estudados
+
+| Nível | Tópicos |
+|-------|---------|
+| Básico | Tipos, variáveis, condicionais, laços, arrays |
+| Médio | Classes, objetos, herança, interfaces, encapsulamento |
+| Avançado | Coleções, streams, exceções, I/O, datas |
+| Aplicado | APIs REST (Spring Boot), integração com banco de dados |
+
+---
+
+## Projetos futuros relacionados
+
+- **Calculadora de Prazos Processuais** (janeiro 2027) — Java com datas e feriados
+- **Analisador Financeiro** (dezembro 2026) — Java para cálculos de indicadores
+- **Sistema de Gestão de Orientações** (junho 2027) — sistema completo em Java
+
+---
+
+## Evolução prevista
+
+```
+Sintaxe básica  →  Orientação a objetos  →
+Coleções e streams  →  Datas e I/O  →
+APIs REST com Spring Boot
+```

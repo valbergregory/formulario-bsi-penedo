@@ -1,0 +1,61 @@
+name: Verificações do Projeto
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  python-checks:
+    name: Testes Python
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Instalar dependências
+        run: pip install -r requirements.txt
+
+      - name: Executar testes de estrutura
+        run: pytest tests/ -v --tb=short
+
+      - name: Verificar estrutura do projeto
+        run: python scripts/check_project.py
+
+  quarto-check:
+    name: Verificação Quarto
+    runs-on: ubuntu-latest
+    needs: python-checks
+
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Instalar Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Configurar Python para Quarto
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Instalar dependências Python
+        run: pip install -r requirements.txt
+
+      - name: Verificar renderização do site
+        run: quarto render --no-cache
+        env:
+          QUARTO_PRINT_STACK: true

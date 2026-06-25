@@ -1,0 +1,90 @@
+---
+title: "Por que criar um laboratório de Direito, Economia e Tecnologia?"
+date: "2026-08-01"
+description: "Reflexões sobre o que motivou a criação deste espaço e o que pretendo construir aqui ao longo do tempo."
+categories: [reflexão, laboratório, apresentação]
+author: "Valber Gregory"
+---
+
+**Resumo:** Explico as motivações para criar este laboratório: a necessidade de documentar minha evolução técnica, organizar projetos interdisciplinares e oferecer materiais úteis para estudantes e pesquisadores.
+
+**Tempo estimado de leitura:** 5 minutos | **Categorias:** reflexão, laboratório, apresentação
+
+---
+
+## Por onde começa um laboratório?
+
+Não começa com um equipamento. Não começa com um projeto aprovado. Começa com uma pergunta que não sai da cabeça — e com a percepção de que você não tem, ainda, as ferramentas para respondê-la bem.
+
+No meu caso, as perguntas são antigas. Como medir o impacto de uma lei? Como avaliar se um tribunal está distribuindo processos de forma eficiente? Como transformar dados públicos em insumos para decisões melhores? Essas perguntas existem desde que comecei a trabalhar na intersecção entre Direito, Economia e Administração Pública.
+
+O que não existia, ainda, era um espaço organizado para documentar minha trajetória de buscar respostas para elas.
+
+---
+
+## A motivação prática
+
+Sou professor de Sistemas de Informação na UFAL — Penedo. Sou analista judiciário no Tribunal de Justiça de Alagoas. Tenho formação em Direito e Economia, com mestrado e doutorado nesta última área.
+
+O que faço no dia a dia é interdisciplinar por natureza: analiso dados, interpreto normas, oriento estudantes, observo sistemas de informação em funcionamento. Mas eu percebi, com o tempo, que essa interdisciplinaridade tinha um ponto cego: **eu não documentava sistematicamente minha evolução técnica**.
+
+Dominava conceitos. Sabia interpretar uma regressão. Conseguia analisar uma base de dados. Mas não tinha projetos públicos que demonstrassem isso. Não havia um repositório onde eu pudesse mostrar, com código, o que sei fazer e — mais importante — o que ainda estou aprendendo.
+
+---
+
+## O que é este laboratório?
+
+É um portfólio acadêmico e tecnológico, mas com uma diferença importante em relação à maioria dos portfólios que vejo: ele documenta **processo**, não apenas resultados.
+
+Aqui você vai encontrar projetos concluídos, mas também projetos planejados. Exemplos que funcionam, mas também reflexões sobre por que certos caminhos não funcionaram. Código comentado para ensinar, não apenas para impressionar.
+
+A narrativa central que quero construir é esta:
+
+> *Do uso de dados em pesquisas acadêmicas à construção de aplicações, APIs, bancos de dados e sistemas integrados nas áreas de Direito, Economia e Tecnologia.*
+
+Não é uma progressão automática. É uma trilha que exige dedicação, frustração e revisão constante.
+
+---
+
+## Por que agora?
+
+Três razões práticas:
+
+**1. A janela de tempo existe.** Construí uma rotina que permite dedicar tempo a projetos de longa duração. Isso é raro e precisa ser aproveitado.
+
+**2. As ferramentas estão maduras.** Quarto, GitHub Pages, GitHub Actions — todas as peças para criar um portfólio técnico reproduzível, gratuito e de qualidade profissional estão disponíveis e documentadas.
+
+**3. Meus estudantes precisam de exemplos reais.** Não de slides com pseudocódigo. De projetos que possam clonar, executar e adaptar. Este laboratório pretende ser isso: um repositório de exemplos que emergem de problemas reais.
+
+---
+
+## O que você pode esperar
+
+Entre agosto de 2026 e julho de 2027, planejo:
+
+- Publicar 18 projetos, do mais simples ao mais complexo
+- Desenvolver exemplos didáticos em R, Python, SQL, C++ e Java
+- Documentar minha evolução com honestidade — incluindo os erros e as revisões
+- Criar materiais úteis para estudantes de TCC e pesquisadores
+
+Não prometo publicar diariamente. Mas prometo publicar com regularidade e com qualidade suficiente para que o conteúdo seja útil para quem chegar aqui.
+
+---
+
+## Objetivos desta trilha
+
+- **Agosto–Setembro 2026:** portfólio e fundamentos — R, Python, SQL
+- **Outubro–Dezembro 2026:** econometria, dados públicos, ferramentas jurídicas
+- **Janeiro–Março 2027:** Java, observatórios regionais, estudos reproduzíveis
+- **Abril–Julho 2027:** C++, APIs, sistemas integrados
+
+---
+
+## Próximos passos
+
+- Publicar os laboratórios R e Python com os primeiros exemplos
+- Iniciar o projeto SQL para Pesquisadores
+- Documentar as próximas duas postagens do diário
+
+[→ Ver a trilha completa](../../trilha.qmd)
+[→ Ver os projetos planejados](../../projetos.qmd)
